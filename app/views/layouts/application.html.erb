@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>TELOS</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <header>
+      <div class="header-logo">
+        <%= link_to("TELOS", "/") %>
+      </div>
+      <ul class="header-menus">
+        <% if @current_user %>
+          <li>
+            <%= link_to(@current_user.name, "/users/#{@current_user.id}") %>
+          </li>
+          <li>
+            <%= link_to("What's TELOS?", "/about") %>
+          </li>
+          <li>
+            <%= link_to("Users", "/users/index") %>
+          </li>
+          <li>
+            <%= link_to("Discussion", "/posts/index") %>
+          </li>
+          <li>
+            <%= link_to("Post", "/posts/new") %>
+          </li>
+          <li>
+            <%= link_to("Logout", "/logout", {method: :post}) %>
+          </li>
+        <% else %>
+          <li>
+            <%= link_to("What's TELOS?", "/about") %>
+          </li>
+          <li>
+            <%= link_to("Sign Up", "/signup") %>
+          </li>
+          <li>
+            <%= link_to("Login", "/login") %>
+          </li>
+        <% end %>
+      </ul>
+    </header>
+    <% if flash[:notice] %>
+      <div class="flash">
+        <%= flash[:notice]%>
+      </div>
+    <% end %>
+    <%= yield %>
+  </body>
+</html>

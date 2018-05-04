@@ -1,0 +1,19 @@
+current directory: /Users/SeiyaKobayashi/Desktop/TELOS/vendor/bundle/gems/byebug-10.0.2/ext/byebug
+/Users/SeiyaKobayashi/.rbenv/versions/2.4.2/bin/ruby -r ./siteconf20180504-60819-9u0lti.rb extconf.rb
+creating Makefile
+
+current directory: /Users/SeiyaKobayashi/Desktop/TELOS/vendor/bundle/gems/byebug-10.0.2/ext/byebug
+make "DESTDIR=" clean
+
+current directory: /Users/SeiyaKobayashi/Desktop/TELOS/vendor/bundle/gems/byebug-10.0.2/ext/byebug
+make "DESTDIR="
+compiling breakpoint.c
+compiling byebug.c
+compiling context.c
+compiling locker.c
+compiling threads.c
+linking shared-object byebug/byebug.bundle
+
+current directory: /Users/SeiyaKobayashi/Desktop/TELOS/vendor/bundle/gems/byebug-10.0.2/ext/byebug
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 byebug.bundle ./.gem.20180504-60819-1h2wmhw/byebug
