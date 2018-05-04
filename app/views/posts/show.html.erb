@@ -11,6 +11,7 @@
       <div class="post-time">
         <%= @post.created_at%>
       </div>
+      <!-- If it's his/her own post, make it editable -->
       <% if @post.user_id == @current_user.id %>
         <div class="post-menus">
           <%= link_to("Edit", "/posts/#{@post.id}/edit") %>

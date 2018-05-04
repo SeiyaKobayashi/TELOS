@@ -3,7 +3,6 @@
   <head>
     <title>TELOS</title>
     <%= csrf_meta_tags %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -14,18 +13,19 @@
         <%= link_to("TELOS", "/") %>
       </div>
       <ul class="header-menus">
+        <!-- If logged in -->
         <% if @current_user %>
           <li>
             <%= link_to(@current_user.name, "/users/#{@current_user.id}") %>
           </li>
           <li>
-            <%= link_to("What's TELOS?", "/about") %>
+            <%= link_to("About", "/about") %>
           </li>
           <li>
             <%= link_to("Users", "/users/index") %>
           </li>
           <li>
-            <%= link_to("Discussion", "/posts/index") %>
+            <%= link_to("Words", "/posts/index") %>
           </li>
           <li>
             <%= link_to("Post", "/posts/new") %>
@@ -33,9 +33,10 @@
           <li>
             <%= link_to("Logout", "/logout", {method: :post}) %>
           </li>
+        <!-- If not a valid user (or not logged in) -->
         <% else %>
           <li>
-            <%= link_to("What's TELOS?", "/about") %>
+            <%= link_to("About", "/about") %>
           </li>
           <li>
             <%= link_to("Sign Up", "/signup") %>

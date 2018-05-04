@@ -1,6 +1,6 @@
 <div class="main users-edit">
   <div class="container">
-    <div class="form-heading">Edit User Information</div>
+    <div class="form-heading">Edit Your Profile</div>
     <div class="form users-form">
       <%= form_tag("/users/#{params[:id]}/update", {multipart: true}) do %>
         <div class="form-body">
@@ -11,7 +11,7 @@
           <% end %>
           <p>Username</p>
           <input name = "name" value= <%= @user.name %>>
-          <p>Profile Phtoto</p>
+          <p>Profile Photo</p>
           <input name="image" type="file">
           <p>Email Address</p>
           <input name = "email" value= <%= @user.email %>>
