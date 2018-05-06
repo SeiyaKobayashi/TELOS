@@ -8,16 +8,20 @@
       <p>
         <%= @post.content%>
       </p>
+      <% @arr.each do |tag| %>
+        <%= link_to("##{tag.label}", "/tags/#{tag.id}") %>
+      <% end %>
       <div class="post-time">
         <%= @post.created_at%>
       </div>
-      <!-- If it's his/her own post, make it editable -->
-      <% if @post.user_id == @current_user.id %>
-        <div class="post-menus">
+      <div class="post-menus">
+        <%= link_to("Tags", "/posts/#{@post.id}/tags") %>
+        <!-- If it's his/her own post, make it editable -->
+        <% if @post.user_id == @current_user.id %>
           <%= link_to("Edit", "/posts/#{@post.id}/edit") %>
           <%= link_to("Delete", "/posts/#{@post.id}/delete", {method:"post"}) %>
-        </div>
-      <% end %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>

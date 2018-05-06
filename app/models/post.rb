@@ -7,4 +7,9 @@ class Post < ApplicationRecord
     return User.find_by(id: self.user_id)
   end
 
+  # Tags related to id of Post
+  def tags
+    return Tag.where(group_id: self.tag_group_id)
+  end
+
 end

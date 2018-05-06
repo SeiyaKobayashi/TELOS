@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   get 'posts/:id/edit' => 'posts#edit'
   post 'posts/:id/update' => 'posts#update'
   post 'posts/:id/delete' => 'posts#delete'
+  get 'posts/:id/tags' => 'tags#new'
+  post 'posts/:id/tags/create' => 'tags#create'
 
   get 'users/index' => 'users#index'
   get "signup" => "users#new"
@@ -20,5 +22,8 @@ Rails.application.routes.draw do
   get "login" => "users#login_form"
   post "login" => "users#login"
   post "logout" => "users#logout"
+
+  get 'tags/index' => 'tags#index'
+  get 'tags/:id' => 'tags#show'
 
 end

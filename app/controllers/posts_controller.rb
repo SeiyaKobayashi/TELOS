@@ -8,10 +8,17 @@ class PostsController < ApplicationController
     @posts = Post.all.order(updated_at: :desc)
   end
 
-  # Show post details (user, date etc.)
+  # Show post details (user, date, tags etc.)
   def show
     @post = Post.find_by(id: params[:id])
     @user = @post.user
+    # Search GroupId model, given @post.id
+    @tags = GroupId.where(post_id: @post.id)
+    # Array to store tags
+    @arr = Array.new
+    @tags.each do |tag|
+      @arr.push(Tag.find_by(id: tag.tag_id))
+    end
   end
 
   # Create a new post

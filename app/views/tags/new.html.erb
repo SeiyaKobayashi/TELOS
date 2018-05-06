@@ -1,0 +1,19 @@
+<div class="main tags-new">
+  <div class="container">
+    <h1 class="form-heading">Add Tags to Post!</h1>
+    <!-- Redirect to "/tags/create" when "Add" button is clicked -->
+    <%= form_tag("/posts/#{@post.id}/tags/create") do %>
+      <div class="form">
+        <div class="form-body">
+          <% @post.errors.full_messages.each do |message| %>
+            <div class="form-error">
+              <%= message %>
+            </div>
+          <% end %>
+          <input name = "label" value = <%= @tag.label %>>
+          <input type="submit" value="Add">
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
