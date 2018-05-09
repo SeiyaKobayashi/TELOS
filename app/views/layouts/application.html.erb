@@ -12,6 +12,10 @@
       <div class="header-logo">
         <%= link_to("TELOS", "/") %>
       </div>
+      <div class="header-menus-left">
+        <p>|</p>
+        <%= link_to("About", "/about") %>
+      </div>
       <ul class="header-menus">
         <!-- If logged in -->
         <% if @current_user %>
@@ -19,13 +23,13 @@
             <%= link_to(@current_user.name, "/users/#{@current_user.id}") %>
           </li>
           <li>
-            <%= link_to("About", "/about") %>
-          </li>
-          <li>
             <%= link_to("Users", "/users/index") %>
           </li>
           <li>
             <%= link_to("Words", "/posts/index") %>
+          </li>
+          <li>
+            <%= link_to("Tags", "/tags/index") %>
           </li>
           <li>
             <%= link_to("Post", "/posts/new") %>
@@ -35,9 +39,6 @@
           </li>
         <!-- If not a valid user (or not logged in) -->
         <% else %>
-          <li>
-            <%= link_to("About", "/about") %>
-          </li>
           <li>
             <%= link_to("Sign Up", "/signup") %>
           </li>

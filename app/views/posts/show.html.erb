@@ -8,8 +8,10 @@
       <p>
         <%= @post.content%>
       </p>
-      <% @arr.each do |tag| %>
-        <%= link_to("##{tag.label}", "/tags/#{tag.id}") %>
+      <% if @tag_bit == 1 %>
+        <% @tags_new.each do |tag| %>
+          <%= link_to("##{tag.label}", "/tags/#{tag.id}") %>
+        <% end %>
       <% end %>
       <div class="post-time">
         <%= @post.created_at%>
