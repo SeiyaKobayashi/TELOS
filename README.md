@@ -5,6 +5,15 @@ $ rails server
 ```
 Then, access http://localhost:3000
 
+## Things I'm currently working on
+* Search feature
+  * Search Users
+  * Search Posts
+  * Search Tags
+* My Vocab List
+* User/Tag deletion
+* Improve UX
+
 ## Sign Up Screen
 ### Sign up with username, email address, and password.
 ![](https://user-images.githubusercontent.com/22423957/39805443-de06af12-5344-11e8-987b-998127728c7f.png)
