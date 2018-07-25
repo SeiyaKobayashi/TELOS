@@ -31,7 +31,8 @@ class PostsController < ApplicationController
 
   # create is called from "posts/new.html.erb"
   def create
-    @post = Post.new(content: params[:content], user_id: @current_user.id)
+    @post = Post.new(content: "#{params[:word]}: #{params[:definition]}\n#{params[:sentence]}",
+                     user_id: @current_user.id)
 
     if @post.save
       flash[:notice] = "Your post has been added."
@@ -40,6 +41,7 @@ class PostsController < ApplicationController
       render("posts/new")
     end
   end
+
 
   # Edit your past post
   def edit
@@ -76,6 +78,11 @@ class PostsController < ApplicationController
       flash[:notice] = "You do not have authorization. Redirected to your personal page."
       redirect_to("/users/#{@current_user.id}")
     end
+  end
+
+  # Search posts (search is called from "posts/index.html.erb")
+  def search
+    
   end
 
 end

@@ -1,6 +1,6 @@
 <div class="main posts-new">
   <div class="container">
-    <h1 class="form-heading">Post a new word!</h1>
+    <h1 class="form-heading">Post a new word!!</h1>
     <!-- Redirect to "/posts/create" when "Post" button is clicked -->
     <%= form_tag("/posts/create") do %>
       <div class="form">
@@ -10,8 +10,17 @@
               <%= message %>
             </div>
           <% end %>
-          <textarea name = "content"><%= @post.content %></textarea>
-          <input type="submit" value="Post">
+          <div class="form-inputs">
+            <p>Word/Phrase</p>
+            <input name = "word" placeholder = "E.g.) Apple" required>
+            <p>Definition/Explanation</p>
+            <input name = "definition" placeholder = "E.g.) リンゴ " required>
+            <p>Sample Sentence (Optional*)</p>
+            <textarea name = "sentence" placeholder = "E.g.) I have an apple. "></textarea>
+          </div>
+          <div class="button">
+            <input type= "submit" value = "Post">
+          </div>
         </div>
       </div>
     <% end %>

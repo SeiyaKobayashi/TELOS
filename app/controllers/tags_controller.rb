@@ -64,7 +64,7 @@ class TagsController < ApplicationController
         @group_id = GroupId.new(tag_group_id: @tag.group_id, post_id: @post.id, tag_id: @tag.id)
         @group_id.save
         flash[:notice] = "A new tag has been added."
-        redirect_to("/tags/index")
+        redirect_to("/tags/#{@tag.group_id}")
         return
       end
     # After creating the first tag
@@ -99,10 +99,10 @@ class TagsController < ApplicationController
         else
           flash[:notice] = "A new tag has been added."
         end
-        redirect_to("/tags/index")
+        redirect_to("/tags/#{@tag.group_id}")
         return
       end
     end
   end
-  
+
 end
