@@ -31,7 +31,7 @@ class PostsController < ApplicationController
 
   # create is called from "posts/new.html.erb"
   def create
-    @post = Post.new(content: "#{params[:word]}: #{params[:definition]}\n#{params[:sentence]}",
+    @post = Post.new(content: "#{params[:word]}: #{params[:definition]}\r\n#{params[:sentence]}",
                      user_id: @current_user.id)
 
     if @post.save
@@ -82,7 +82,7 @@ class PostsController < ApplicationController
 
   # Search posts (search is called from "posts/index.html.erb")
   def search
-    
+
   end
 
 end
