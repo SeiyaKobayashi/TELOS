@@ -6,7 +6,7 @@
         <%= link_to(@user.name, "/users/#{@user.id}") %>
       </div>
       <p>
-        <%= @post.content%>
+        <%= simple_format(@post.content)%>
       </p>
       <% if @tag_bit == 1 %>
         <% @tags_new.each do |tag| %>
