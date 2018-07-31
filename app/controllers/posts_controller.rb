@@ -65,9 +65,37 @@ class PostsController < ApplicationController
   def delete
     @post = Post.find_by(id: params[:id])
 
-    @post.destroy
-    flash[:notice] = "Your post has been deleted."
-    redirect_to("/posts/index")
+    # If post has no tags
+    if @post.tag_id == nil
+        @post.destroy
+        flash[:notice] = "Your post has been deleted."
+        redirect_to("/posts/index")
+    # Otherwise
+    else
+        tags = Tag.where(post_id: @post.id)
+        tags.each do |tag|
+            tag_group_id = tag.group_id
+            tags_with_that_groupid = Tag.where(group_id: tag_group_id)
+            # If that tag is attached only to that word (post)
+            if tags_with_that_groupid.length == 1
+                puts("hello!!")
+                tag.destroy
+            # Otherwise, loop through tags with that group id
+            else
+                tags_with_that_groupid.each do |tag_n|
+                    if tag_n.post_id == @post.id
+                        tag_n.post_id = nil
+                    else
+                        next
+                    end
+                end
+            end
+        end
+        # After unlinking tags from post, simply destroy that post
+        @post.destroy
+        flash[:notice] = "Your post has been deleted."
+        redirect_to("/posts/index")
+    end
   end
 
   # Check if the post that current_user is about to edit/delete is his/her own

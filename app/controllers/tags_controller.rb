@@ -41,6 +41,11 @@ class TagsController < ApplicationController
   def new
     @post = Post.find_by(id: params[:id])
     @tag = Tag.new(label: params[:label])
+    @tags = Tag.where(post_id: @post.id)
+    @tags_list = ""
+    @tags.each do |tag|
+        @tags_list = @tags_list + "#" + tag.label + "\r\n"
+    end
   end
 
   # create is called from "tags/new.html.erb"
@@ -103,6 +108,11 @@ class TagsController < ApplicationController
         return
       end
     end
+  end
+
+  # delete is called from "tags/new.html.erb"
+  def delete
+
   end
 
 end
