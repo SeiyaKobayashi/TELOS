@@ -112,7 +112,46 @@ class TagsController < ApplicationController
 
   # delete is called from "tags/new.html.erb"
   def delete
+      # Retrieve orginal tags attached to the post
+      post = Post.find_by(id: params[:id])
+      temp = GroupId.where(post_id: post.id)
+      tags_old = Array.new
+      if temp.length == 1
+          tags_old.push(Tag.find_by(id: temp[0].tag_id))
+      else
+          temp.each do |tag_old|
+              tags_old.push(Tag.find_by(id: tag_old.tag_id))
+          end
+      end
 
+      # Get new tags from textarea, removing "#" and "\r\n"
+      tags_new = params[:tags]
+      tags_new = tags_new.split("\r\n")
+      if tags_new.length == 1
+          tags_new = tags_new[1, tags_new.length-1]
+      else
+          tags_new.each do |tag_new|
+              tag_new = tag_new[1, tag_new.length-1]
+          end
+      end
+
+      # Compare these two sets of tags (-> what if new tags are added using this textarea?)
+      diff = tags_old - tags_new
+      if diff != nil
+          diff.each do |tag_to_be_removed|
+              tags_with_same_gid = GroupId.where(tag_group_id: tag_to_be_removed.group_id)
+              if tags_with_same_gid.length == 1
+                  tags_with_same_gid[0].destroy
+                  tag_to_be_removed.destroy
+              else
+                  tag_to_be_removed.destroy
+              end
+          end
+      else
+          flash[:notice] = "Nothing has changed. Please delete tags you want to be removed."
+      end
+      flash[:notice] = "Tags deleted."
+      redirect_to("/posts/#{post.id}")
   end
 
 end
