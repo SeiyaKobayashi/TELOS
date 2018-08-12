@@ -168,4 +168,9 @@ class TagsController < ApplicationController
       end
   end
 
+  # Search tags
+  def search
+      
+  end
+
 end

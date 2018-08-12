@@ -224,13 +224,14 @@ header :hover {
 }
 
 .form input[type="submit"] {
+　display: inline-block;
   background-color: #ed8753;
   color: white;
   cursor: pointer;
   font-weight: 300;
-  width: 120px;
+  width: 160px;
   border-radius: 2px;
-  margin-top: 8px;
+  margin-top: 5px;
   margin-bottom: 0;
 }
 

@@ -16,16 +16,19 @@ Rails.application.routes.draw do
   # get 'posts/search' => 'posts#search'
 
   get 'users/index' => 'users#index'
-  get "signup" => "users#new"
-  post "users/create" => "users#create"
+  get 'signup' => 'users#new'
+  post 'users/create' => 'users#create'
   get 'users/:id' => 'users#show'
-  get "users/:id/edit" => "users#edit"
-  post "users/:id/update" => "users#update"
-  get "login" => "users#login_form"
-  post "login" => "users#login"
-  post "logout" => "users#logout"
+  get 'users/:id/edit' => 'users#edit'
+  post 'users/:id/update' => 'users#update'
+  get 'login' => 'users#login_form'
+  post 'login' => 'users#login'
+  post 'logout' => 'users#logout'
+  post 'users/:id/delete' => 'users#delete'
+  # get 'users/search' => 'users#search'
 
   get 'tags/index' => 'tags#index'
   get 'tags/:id' => 'tags#show'
+  # get 'tags/search' => 'tags#search'
 
 end
