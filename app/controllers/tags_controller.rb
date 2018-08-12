@@ -125,17 +125,24 @@ class TagsController < ApplicationController
       end
 
       # Get new tags from textarea, removing "#" and "\r\n"
-      tags_new = params[:tags]
-      tags_new = tags_new.split("\r\n")
-      if tags_new.length == 1
-          tags_new = tags_new[1, tags_new.length-1]
+      temp_new = params[:tags]
+      if temp_new == nil
+          temp_new = Array.new
       else
-          tags_new.each do |tag_new|
-              tag_new = tag_new[1, tag_new.length-1]
+          temp_new = temp_new.split("\r\n")
+          tags_new = Array.new
+          if temp_new.length == 1
+              temp_new = temp_new[0]
+              temp_new = temp_new[1, temp_new.length-1]
+          else
+              temp_new.each do |tag_new|
+                  tag_new = tag_new[1, tag_new.length-1]
+                  tags_new.push(tag_new)
+              end
           end
       end
 
-      # Compare these two sets of tags (-> what if new tags are added using this textarea?)
+      # Compare these two arrays of tags
       diff = tags_old - tags_new
       if diff != nil
           diff.each do |tag_to_be_removed|
@@ -148,7 +155,7 @@ class TagsController < ApplicationController
               end
           end
       else
-          flash[:notice] = "Nothing has changed. Please delete tags you want to be removed."
+          flash[:notice] = "Nothing has been changed. Please delete tags you want to be removed."
       end
       flash[:notice] = "Tags deleted."
       redirect_to("/posts/#{post.id}")

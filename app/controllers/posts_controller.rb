@@ -78,13 +78,14 @@ class PostsController < ApplicationController
             tags_with_that_groupid = Tag.where(group_id: tag_group_id)
             # If that tag is attached only to that word (post)
             if tags_with_that_groupid.length == 1
-                puts("hello!!")
+                gid = GroupId.where(tag_id: tag.id)
+                gid.destroy
                 tag.destroy
             # Otherwise, loop through tags with that group id
             else
                 tags_with_that_groupid.each do |tag_n|
                     if tag_n.post_id == @post.id
-                        tag_n.post_id = nil
+                        tag_n.destroy
                     else
                         next
                     end
