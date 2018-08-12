@@ -42,7 +42,6 @@ class PostsController < ApplicationController
     end
   end
 
-
   # Edit your past post
   def edit
     @post = Post.find_by(id: params[:id])
@@ -64,32 +63,20 @@ class PostsController < ApplicationController
   # delete is called from "posts/show.html.erb"
   def delete
     @post = Post.find_by(id: params[:id])
+    post_gid = GroupId.find_by(post_id: @post.id)
 
     # If post has no tags
-    if @post.tag_id == nil
+    if post_gid == nil
         @post.destroy
         flash[:notice] = "Your post has been deleted."
         redirect_to("/posts/index")
-    # Otherwise
     else
         tags = Tag.where(post_id: @post.id)
-        tags.each do |tag|
-            tag_group_id = tag.group_id
-            tags_with_that_groupid = Tag.where(group_id: tag_group_id)
-            # If that tag is attached only to that word (post)
-            if tags_with_that_groupid.length == 1
-                gid = GroupId.where(tag_id: tag.id)
-                gid.destroy
-                tag.destroy
-            # Otherwise, loop through tags with that group id
-            else
-                tags_with_that_groupid.each do |tag_n|
-                    if tag_n.post_id == @post.id
-                        tag_n.destroy
-                    else
-                        next
-                    end
-                end
+        if tags.length == 1
+            delete_inner(tags[0])
+        else
+            tags.each do |tag|
+                delete_inner(tag)
             end
         end
         # After unlinking tags from post, simply destroy that post
@@ -97,6 +84,28 @@ class PostsController < ApplicationController
         flash[:notice] = "Your post has been deleted."
         redirect_to("/posts/index")
     end
+  end
+
+  def delete_inner(tag)
+      tag_gid = tag.group_id
+      tags_with_that_gid = Tag.where(group_id: tag_gid)
+      # If that tag is attached only to that post
+      if tags_with_that_gid.length == 1
+          gid = GroupId.find_by(tag_id: tag.id)
+          gid.destroy
+          tag.destroy
+      # Otherwise, loop through tags with that group id
+      else
+          tags_with_that_gid.each do |tag_n|
+              if tag_n.post_id == @post.id
+                  gid = GroupId.find_by(tag_id: tag_n.id)
+                  gid.destroy
+                  tag_n.destroy
+              else
+                  next
+              end
+          end
+      end
   end
 
   # Check if the post that current_user is about to edit/delete is his/her own
