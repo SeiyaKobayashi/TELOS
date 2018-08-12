@@ -1,5 +1,7 @@
 class TagsController < ApplicationController
 
+    before_action :authenticate_user
+
   # List all tags in descending order
   def index
     tags = Tag.all.order(created_at: :asc)
@@ -117,49 +119,53 @@ class TagsController < ApplicationController
       post = Post.find_by(id: params[:id])
       temp = GroupId.where(post_id: post.id)
       tags_old = Array.new
-      if temp.length == 1
-          tags_old.push(Tag.find_by(id: temp[0].tag_id))
+      if temp.length == 0
+          flash[:notice] = "Nothing can be deleted. Please attach tags before deleting."
+          redirect_to("/posts/#{post.id}/tags")
+          return
       else
-          temp.each do |tag_old|
-              tags_old.push(Tag.find_by(id: tag_old.tag_id))
+          if temp.length == 1
+              tags_old.push(Tag.find_by(id: temp[0].tag_id))
+          else
+              temp.each do |tag_old|
+                  tags_old.push(Tag.find_by(id: tag_old.tag_id))
+              end
           end
       end
 
       # Get new tags from textarea, removing "#" and "\r\n"
       temp_new = params[:tags]
-      if temp_new == nil
-          temp_new = Array.new
-      else
+      tags_new = Array.new
+      if temp_new != nil
           temp_new = temp_new.split("\r\n")
-          tags_new = Array.new
           if temp_new.length == 1
               temp_new = temp_new[0]
               temp_new = temp_new[1, temp_new.length-1]
+              tags_new.push(Tag.find_by(label: temp_new))
           else
               temp_new.each do |tag_new|
                   tag_new = tag_new[1, tag_new.length-1]
-                  tags_new.push(tag_new)
+                  tags_new.push(Tag.find_by(label: tag_new))
               end
           end
       end
 
       # Compare these two arrays of tags
       diff = tags_old - tags_new
-      if diff != nil
+      if diff.length != 0
           diff.each do |tag_to_be_removed|
-              tags_with_same_gid = GroupId.where(tag_group_id: tag_to_be_removed.group_id)
-              if tags_with_same_gid.length == 1
-                  tags_with_same_gid[0].destroy
-                  tag_to_be_removed.destroy
-              else
-                  tag_to_be_removed.destroy
-              end
+              tag_gid = GroupId.find_by(tag_id: tag_to_be_removed.id)
+              tag_gid.destroy
+              tag_to_be_removed.destroy
           end
+          flash[:notice] = "Tags have been deleted."
+          redirect_to("/posts/#{post.id}")
+          return
       else
           flash[:notice] = "Nothing has been changed. Please delete tags you want to be removed."
+          redirect_to("/posts/#{post.id}/tags")
+          return
       end
-      flash[:notice] = "Tags deleted."
-      redirect_to("/posts/#{post.id}")
   end
 
 end
