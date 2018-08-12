@@ -90,6 +90,60 @@ class UsersController < ApplicationController
     redirect_to("/login")
   end
 
+  # delete is called from "users/edit.html.erb"
+  def delete
+      user = User.find_by(id: params[:id])
+      for post in user.posts do
+          post_gid = GroupId.find_by(post_id: post.id)
+          # If post has no tags
+          if post_gid == nil
+              post.destroy
+          else
+              tags = Tag.where(post_id: post.id)
+              if tags.length == 1
+                  delete_inner(tags[0])
+              else
+                  tags.each do |tag|
+                      delete_inner(tag)
+                  end
+              end
+              # After unlinking tags from post, simply destroy that post
+              post.destroy
+          end
+      end
+
+      user.destroy
+      flash[:notice] = "Your account has been deleted. Thanks for using TELOS."
+      redirect_to("/login")
+  end
+
+  def delete_inner(tag)
+      tag_gid = tag.group_id
+      tags_with_that_gid = Tag.where(group_id: tag_gid)
+      # If that tag is attached only to that post
+      if tags_with_that_gid.length == 1
+          gid = GroupId.find_by(tag_id: tag.id)
+          gid.destroy
+          tag.destroy
+      # Otherwise, loop through tags with that group id
+      else
+          tags_with_that_gid.each do |tag_n|
+              if tag_n.post_id == post.id
+                  gid = GroupId.find_by(tag_id: tag_n.id)
+                  gid.destroy
+                  tag_n.destroy
+              else
+                  next
+              end
+          end
+      end
+  end
+
+  # Search users
+  def search
+
+  end
+
   # Check if it's his/her own user page and prevent from being able to edit profile
   def ensure_correct_user
     if @current_user.id != params[:id].to_i

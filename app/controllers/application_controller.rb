@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
     @current_user = User.find_by(id: session[:user_id])
   end
 
-  # Check if a valid user and prevent from viewing certain pages
+  # Check if it's a valid user and forbid access to certain pages
   def authenticate_user
     if @current_user == nil
       flash[:notice] = "Login to continue."
@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  # Check if a valid user and prevent from logging in twice
+  # Prevent user from logging in twice
   def forbid_login_user
     if @current_user
       flash[:notice] = "You're already logged in."

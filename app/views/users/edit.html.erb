@@ -17,7 +17,14 @@
           <input name = "email" value= <%= @user.email %>>
           <p>Password</p>
           <input name = "password" value= <%= @user.password %>>
-          <input type="submit" value="Save">
+          <div class="user-btn-1">
+            <input type = "submit" value = "Save">
+          </div>
+        </div>
+      <% end %>
+      <%= form_tag("/users/#{params[:id]}/delete") do %>
+        <div class="user-btn-2">
+          <input type = "submit" value = "Delete Account">
         </div>
       <% end %>
     </div>
