@@ -1,4 +1,8 @@
 <div class="main posts-index">
+  <%= form_tag("/posts/index", method: :get) do %>
+    <input name = "key">
+    <input type = "submit" value = "Search">
+  <% end %>
   <div class="container">
     <% @posts.each do |post|%>
       <div class="posts-index-item">

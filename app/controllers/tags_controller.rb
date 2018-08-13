@@ -5,6 +5,9 @@ class TagsController < ApplicationController
   # List all tags in descending order
   def index
     tags = Tag.all.order(created_at: :asc)
+    if params[:key] != ""
+        tags = search(tags)
+    end
     @tags_new = Array.new     # Array to store tags w/o same labels
 
     tags.each do |tag|
@@ -26,6 +29,17 @@ class TagsController < ApplicationController
         end
       end
     end
+  end
+
+  # Search tags
+  def search(tags)
+      keyword = params[:key]
+      tags = tags.where('label like ?', "%#{keyword}%")
+      if tags.length == 0
+          flash[:notice] = "No matches. Please try other keywords."
+          redirect_back(fallback_location: "/tags/index")
+      end
+      return tags
   end
 
   # Show tag details (list of posts to which the tag is attached)
@@ -166,11 +180,6 @@ class TagsController < ApplicationController
           redirect_to("/posts/#{post.id}/tags")
           return
       end
-  end
-
-  # Search tags
-  def search
-      
   end
 
 end
