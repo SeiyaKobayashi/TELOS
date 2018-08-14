@@ -7,6 +7,20 @@ class UsersController < ApplicationController
   # List all users in descending order (new -> old)
   def index
     @users = User.all.order(created_at: :desc)
+    if params[:key] != ""
+        @users = search(@users)
+    end
+  end
+
+  # Search users
+  def search(users)
+      keyword = params[:key]
+      users = users.where('name like ?', "%#{keyword}%")
+      if users.length == 0
+          flash[:notice] = "No matches. Please try other keywords."
+          redirect_back(fallback_location: "/users/index")
+      end
+      return users
   end
 
   # Create a new user
@@ -137,11 +151,6 @@ class UsersController < ApplicationController
               end
           end
       end
-  end
-
-  # Search users
-  def search
-
   end
 
   # Check if it's his/her own user page and prevent from being able to edit profile
