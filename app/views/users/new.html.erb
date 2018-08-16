@@ -1,23 +1,20 @@
-<div class="main users-new">
+<div class="users-new">
+  <img src="telos_top.jpeg">
   <div class="container">
-    <div class="form-heading">Sign Up</div>
+    <div class="form-heading-signup-login">Sign Up</div>
     <div class="form users-form">
-      <div class="form-body">
-
+      <div class="form-body-signup">
         <% @user.errors.full_messages.each do |message| %>
           <div class="form-error">
             <%= message %>
           </div>
         <% end %>
-
         <%= form_tag("/users/create") do%>
-          <p>Username</p>
+          <p>Username:</p>
           <input name = "name" value = <%= @user.name %>>
-
-          <p>Email Address</p>
+          <p>Email Address:</p>
           <input name = "email" value = <%= @user.email %>>
-
-          <p>Password</p>
+          <p>Password:</p>
           <input name = "password" type = "password">
           <div class="button">
             <input type="submit" value="Sign Up">
