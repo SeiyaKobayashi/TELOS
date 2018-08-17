@@ -42,7 +42,10 @@ class UsersController < ApplicationController
       flash[:notice] = "Signed up successfully."
       redirect_to("/users/#{@user.id}")
     else
-      render("users/new")
+      flash[:notice] = "All fields are required."
+      @name = params[:name]
+      @email = params[:email]
+      redirect_to("/signup")
     end
   end
 

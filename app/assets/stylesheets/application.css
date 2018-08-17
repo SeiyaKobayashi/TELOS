@@ -76,6 +76,7 @@
  }
 
  /* Header ========================= */
+
  header {
    height: 60px;
    position: fixed;
@@ -128,4 +129,8 @@
    color: white;
    font-size: 20px;
    line-height: 60px;
+ }
+
+ #user-search {
+     display: none;
  }

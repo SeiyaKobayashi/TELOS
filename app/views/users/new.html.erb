@@ -4,18 +4,13 @@
     <div class="form-heading-signup-login">Sign Up</div>
     <div class="form users-form">
       <div class="form-body-signup">
-        <% @user.errors.full_messages.each do |message| %>
-          <div class="form-error">
-            <%= message %>
-          </div>
-        <% end %>
         <%= form_tag("/users/create") do%>
           <p>Username:</p>
-          <input name = "name" value = <%= @user.name %>>
+          <input name="name" value="<%= @name %>">
           <p>Email Address:</p>
-          <input name = "email" value = <%= @user.email %>>
+          <input name="email" value="<%= @email %>">
           <p>Password:</p>
-          <input name = "password" type = "password">
+          <input name="password" type="password">
           <div class="button">
             <input type="submit" value="Sign Up">
           </div>

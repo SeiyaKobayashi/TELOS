@@ -3,6 +3,15 @@
   <head>
     <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
     <title>TELOS</title>
+    <script language="javascript" type="text/javascript">
+      function OnIconClick() {
+        target_1 = document.getElementByClassName("header-menus-search");
+        target_2 = document.getElementByClassName("users-search");
+        target_1.style.display = "none";
+        // target_2.style.display = "block";
+        return false;
+      }
+    </script>
     <%= csrf_meta_tags %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
@@ -23,6 +32,28 @@
             <%= link_to(@current_user.name, "/users/#{@current_user.id}") %>
             <p>!</p>
           </li>
+          <% if request.original_fullpath == "/users/index" %>
+            <li>
+              <div class="header-menus-search">
+                <a href="#" onclick="OnIconClick();"><i class="fa fa-search"></i></a>
+              </div>
+              <div class="users-search">
+                    <p>lo!</p>
+              </div>
+            </li>
+          <% elsif request.original_fullpath == "/posts/index" %>
+            <li>
+              <div id="header-menus-search">
+                <i class="fa fa-search"></i>
+              </div>
+            </li>
+          <% elsif request.original_fullpath == "/tags/index" %>
+            <li>
+              <div id="header-menus-search">
+                <i class="fa fa-search"></i>
+              </div>
+            </li>
+          <% end %>
           <li>
             <a href="/users/index"><i class="fa fa-users"></i></a>
           </li>
