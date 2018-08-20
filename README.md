@@ -14,31 +14,22 @@ $ rails server
 ```
 Then access http://localhost:3000
 
-## Sign Up
-### Sign up with username, email address, and password.
-![](https://user-images.githubusercontent.com/22423957/43183658-e4121810-9020-11e8-9756-60aa09031b58.png)
+## Sign Up / Log In
+### Basic SignUp/LogIn feature. 
+![](https://user-images.githubusercontent.com/22423957/44334001-5ce9f700-a4ab-11e8-95cb-699cc5e25505.png)
 
-## Editable Personal Profile 
-### Edit your profile (username, photo and such).
-![](https://user-images.githubusercontent.com/22423957/43183892-aabfad92-9021-11e8-9288-7fbcdf30b5fd.png)
+## Posts
+### Create/Edit/Search/Delete posts (each post consists of a word, its definition, and sample sentences).
+![](https://user-images.githubusercontent.com/22423957/44334484-9d964000-a4ac-11e8-8d7c-2e893c1f0b43.png)
+![](https://user-images.githubusercontent.com/22423957/44334566-dafacd80-a4ac-11e8-8d2d-cff32dddb386.png)
 
-## Post a New Word
-### The very first thing you'll want to do is to post a new word!
-![](https://user-images.githubusercontent.com/22423957/43184005-119be67a-9022-11e8-8e23-32d89bd9923a.png)
-
-## Word List
-### You can view the list of words posted by all users (conceptually akin to blockchain).
-![](https://user-images.githubusercontent.com/22423957/39805576-342a89ea-5345-11e8-9017-798caaba9102.png)
-
-## User List
-### You can view the list of users, including yourself.
-![](https://user-images.githubusercontent.com/22423957/39805548-266b64c8-5345-11e8-8067-bb1012e80fc1.png)
+## Users
+### You can view/search the list of users, including yourself.
+![](https://user-images.githubusercontent.com/22423957/44334679-2f9e4880-a4ad-11e8-90cf-8cf7130051a5.png)
 
 ## Tags
-### You can also attach/remove tags to/from posts (both to yours and to others).
-![](https://user-images.githubusercontent.com/22423957/43184448-9e8229e0-9023-11e8-9b8f-1b2333ebc561.png)
-### Tag list is also available.
-![](https://user-images.githubusercontent.com/22423957/39805648-751db04e-5345-11e8-8602-43871728ac39.png)
-![](https://user-images.githubusercontent.com/22423957/39805659-817f1b70-5345-11e8-8c43-2d0502da95c1.png)
-### You can also view the categorized word lists.
-![](https://user-images.githubusercontent.com/22423957/43184561-f84ea732-9023-11e8-9308-d79eb597fbc2.png)
+### Attach/Remove tags to/from posts (both to yours and to others).
+![](https://user-images.githubusercontent.com/22423957/44334795-79872e80-a4ad-11e8-9666-4a5ae6f14d31.png)
+### Search/View tag list and categorized word list.
+![](https://user-images.githubusercontent.com/22423957/44334952-e5699700-a4ad-11e8-8b53-776c2eae7309.png)
+![](https://user-images.githubusercontent.com/22423957/44334970-f4504980-a4ad-11e8-9959-28da7cea4894.png)
