@@ -1,10 +1,5 @@
 <div class="main users-index">
-  <%= form_tag("/users/index", method: :get) do %>
-    <input name = "key">
-    <input type = "submit" value = "Search">
-  <% end %>
   <div class="container">
-    <h1 class="users-heading">User List</h1>
     <% @users.each do |user|%>
       <div class="users-index-item">
         <div class="user-left">

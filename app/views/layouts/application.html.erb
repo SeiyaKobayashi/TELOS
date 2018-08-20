@@ -1,43 +1,65 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
     <title>TELOS</title>
     <%= csrf_meta_tags %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
   <body>
     <header>
-      <div class="header-logo">
+      <div class="header-title">
         <%= link_to("TELOS", "/") %>
       </div>
-      <div class="header-menus-left">
+      <div class="header-about">
         <p>|</p>
         <%= link_to("About", "/about") %>
       </div>
       <ul class="header-menus">
-        <!-- If logged in -->
         <% if @current_user %>
           <li>
+            <p>Welcome,&nbsp</p>
             <%= link_to(@current_user.name, "/users/#{@current_user.id}") %>
+            <p>!</p>
+          </li>
+          <% if request.original_fullpath.split('?').first == "/users/index" %>
+            <li>
+              <%= form_tag("/users/index", method: :get) do %>
+                <input name = "key">
+                <input type = "submit" value = "Search">
+              <% end %>
+            </li>
+          <% elsif request.original_fullpath.split('?').first == "/posts/index" %>
+            <li>
+              <%= form_tag("/posts/index", method: :get) do %>
+                <input name = "key">
+                <input type = "submit" value = "Search">
+              <% end %>
+            </li>
+          <% elsif request.original_fullpath.split('?').first == "/tags/index" %>
+            <li>
+              <%= form_tag("/tags/index", method: :get) do %>
+                <input name = "key">
+                <input type = "submit" value = "Search">
+              <% end %>
+            </li>
+          <% end %>
+          <li>
+            <a href="/users/index"><i class="fa fa-users"></i></a>
           </li>
           <li>
-            <%= link_to("Users", "/users/index") %>
+            <a href="/posts/index"><i class="fa fa-book"></i></a>
           </li>
           <li>
-            <%= link_to("Words", "/posts/index") %>
+            <a href="/tags/index"><i class="fa fa-tags"></i></a>
           </li>
           <li>
-            <%= link_to("Tags", "/tags/index") %>
-          </li>
-          <li>
-            <%= link_to("Post", "/posts/new") %>
+            <a href="/posts/new"><i class="fa fa-edit"></i></a>
           </li>
           <li>
             <%= link_to("Logout", "/logout", {method: :post}) %>
           </li>
-        <!-- If not a valid user (or not logged in) -->
         <% else %>
           <li>
             <%= link_to("Sign Up", "/signup") %>

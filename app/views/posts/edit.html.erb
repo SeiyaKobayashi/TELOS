@@ -1,6 +1,6 @@
 <div class="main posts-new">
   <div class="container">
-    <h1 class="form-heading">Make Some Changes?</h1>
+    <h1 class="post-new-heading">Modify Your Post</h1>
     <%= form_tag("/posts/#{@post.id}/update") do %>
       <div class="form">
         <div class="form-body">
@@ -10,7 +10,9 @@
             </div>
           <% end %>
           <textarea name = "content"><%= @post.content %></textarea>
-          <input type="submit" value="Save">
+          <div class="button">
+            <input type="submit" value="Save">
+          </div>
         </div>
       </div>
     <% end %>

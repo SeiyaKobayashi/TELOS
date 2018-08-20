@@ -1,8 +1,4 @@
 <div class="main tags-index">
-  <%= form_tag("/tags/index", method: :get) do %>
-    <input name = "key">
-    <input type = "submit" value = "Search">
-  <% end %>
   <div class="container">
     <!-- Show all tags in descending order -->
     <% @tags_new.reverse.each do |tag|%>
