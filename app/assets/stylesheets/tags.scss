@@ -7,31 +7,44 @@
   padding: 20px 30px;
   background-color: white;
   overflow: hidden;
-  box-shadow: 0 2px 6px #c1ced7;
+  box-shadow: 0 2px 4px #898882;
+}
+
+.tags-index-item a {
+  font-size: 16px;
+}
+
+.tags-index-item a:hover {
+  color: #9b9b9b;
 }
 
 /* tags/show ================================ */
 .tags-show-item {
-  padding: 30px;
+  padding: 22px;
   background-color: white;
-  box-shadow: 0 2px 6px #c1ced7;
+  box-shadow: 0 2px 4px #898882;
   overflow: hidden;
   display: table;
   width: 100%;
 }
 
+.tag-name {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
 .tag-name a {
   font-weight: 250;
   margin: 60px 0 20px;
-  font-size: 45px;
-  color: #bcc8d4;
+  font-size: 35px;
 }
 
 .tags-show-item img {
-  width: 50px;
-  height: 50px;
+  width: 55px;
+  height: 55px;
+  margin-left: 5px;
   border-radius: 40%;
-  box-shadow: 0 2px 6px #c1ced7;
+  box-shadow: 0 2px 4px #c1ced7;
   vertical-align: middle;
   object-fit: cover;
 }
@@ -41,7 +54,7 @@
 }
 
 .post-user-name a:hover {
-  color: #ed8753;
+  color: #9b9b9b;
 }
 
 .post-left {
@@ -54,10 +67,16 @@
   width: 90%;
   padding-left: 25px;
   text-align: left;
-  padding-bottom: 20px;
+  padding-bottom: 8px;
 }
 
-/* tags/new ================================ */
+/* tags/new ========================== */
+.tag-heading {
+  text-align: center;
+  margin: 60px 0 20px;
+  font-size: 40px;
+  color: #232321;
+}
 
 .button {
   margin-top: 10px;

@@ -1,9 +1,9 @@
 <div class="main users-edit">
   <div class="container">
-    <div class="form-heading">Edit Your Profile</div>
+    <div class="user-new-heading">Edit Your Profile</div>
     <div class="form users-form">
-      <%= form_tag("/users/#{params[:id]}/update", {multipart: true}) do %>
-        <div class="form-body">
+      <div class="form-body">
+        <%= form_tag("/users/#{params[:id]}/update", {multipart: true}) do %>
           <% @user.errors.full_messages.each do |message| %>
             <div class="form-error">
               <%= message %>
@@ -17,16 +17,19 @@
           <input name = "email" value= <%= @user.email %>>
           <p>Password</p>
           <input name = "password" value= <%= @user.password %>>
-          <div class="user-btn-1">
+          <div class="user-btn">
             <input type = "submit" value = "Save">
           </div>
+        <% end %>
+        <div class="OR">
+          <p>OR</p>
         </div>
-      <% end %>
-      <%= form_tag("/users/#{params[:id]}/delete") do %>
-        <div class="user-btn-2">
-          <input type = "submit" value = "Delete Account">
+        <div class="user-btn">
+          <%= form_tag("/users/#{params[:id]}/delete") do %>
+            <input type = "submit" value = "Delete Account">
+          <% end %>
         </div>
-      <% end %>
+      </div>
     </div>
   </div>
 </div>

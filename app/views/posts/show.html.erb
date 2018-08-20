@@ -8,11 +8,13 @@
       <p>
         <%= simple_format(@post.content)%>
       </p>
-      <% if @tag_bit == 1 %>
-        <% @tags_new.each do |tag| %>
-          <%= link_to("##{tag.label}", "/tags/#{tag.id}") %>
+      <div class="post-tag">
+        <% if @tag_bit == 1 %>
+          <% @tags_new.each do |tag| %>
+            <%= link_to("##{tag.label}", "/tags/#{tag.id}") %>
+          <% end %>
         <% end %>
-      <% end %>
+      </div>
       <div class="post-time">
         <%= @post.created_at%>
       </div>

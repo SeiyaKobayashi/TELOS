@@ -17,7 +17,7 @@ class UsersController < ApplicationController
       keyword = params[:key]
       users = users.where('name like ?', "%#{keyword}%")
       if users.length == 0
-          flash[:notice] = "No matches. Please try other keywords."
+          flash[:notice] = "No matches. Try again with other keywords."
           redirect_back(fallback_location: "/users/index")
       end
       return users

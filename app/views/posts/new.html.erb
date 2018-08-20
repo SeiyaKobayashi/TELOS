@@ -1,6 +1,6 @@
 <div class="main posts-new">
   <div class="container">
-    <h1 class="form-heading">Post a new word!!</h1>
+    <h1 class="posts-new-heading">Create a New Post</h1>
     <!-- Redirect to "/posts/create" when "Post" button is clicked -->
     <%= form_tag("/posts/create") do %>
       <div class="form">
@@ -11,11 +11,11 @@
             </div>
           <% end %>
           <div class="form-inputs">
-            <p>Word/Phrase</p>
+            <p>Word/Phrase (単語/フレーズ)</p>
             <input name = "word" placeholder = "e.g.) Apple" required>
-            <p>Definition/Explanation</p>
+            <p>Definition/Explanation (意味/説明)</p>
             <input name = "definition" placeholder = "e.g.) リンゴ " required>
-            <p>Sample Sentence (Optional*)</p>
+            <p>(Optional*) Sample Sentence (例文)</p>
             <textarea name = "sentence" placeholder = "e.g.) I have an apple. "></textarea>
           </div>
           <div class="button">

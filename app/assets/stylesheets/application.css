@@ -70,7 +70,7 @@
 
  .container {
    max-width: 700px;
-   margin: 70px auto;
+   margin: 80px auto;
    padding: 0 15px;
    clear: both;
  }
@@ -131,6 +131,10 @@
    line-height: 60px;
  }
 
- #user-search {
-     display: none;
+ li input {
+   border-style: double;
+   color: white;
+   background-color: transparent;
+   height: 24px;
+   letter-spacing: 1px;
  }

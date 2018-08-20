@@ -16,7 +16,7 @@ class PostsController < ApplicationController
       keyword = params[:key]
       posts = posts.where('content like ?', "%#{keyword}%")
       if posts.length == 0
-          flash[:notice] = "No matches. Please try other keywords."
+          flash[:notice] = "No matches. Try again with other keywords."
           redirect_back(fallback_location: "/posts/index")
       end
       return posts

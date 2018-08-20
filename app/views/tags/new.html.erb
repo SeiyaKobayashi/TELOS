@@ -1,6 +1,6 @@
 <div class="main tags-new">
   <div class="container">
-    <h1 class="form-heading">Attach Tags to Post!</h1>
+    <h1 class="tag-heading">Attach Tags</h1>
     <!-- Redirect to "/tags/create" when "Add" button is clicked -->
     <%= form_tag("/posts/#{@post.id}/tags/create") do %>
       <div class="form">
@@ -18,7 +18,7 @@
       </div>
     <% end %>
     <!-- Redirect to "/tags/delete" when "Delete" button is clicked -->
-    <h1 class="form-heading">Delete Tags from Post!</h1>
+    <h1 class="tag-heading">Delete Tags</h1>
     <%= form_tag("/posts/#{@post.id}/tags/delete") do %>
       <div class="form">
         <div class="form-body">

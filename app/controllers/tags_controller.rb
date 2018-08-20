@@ -36,7 +36,7 @@ class TagsController < ApplicationController
       keyword = params[:key]
       tags = tags.where('label like ?', "%#{keyword}%")
       if tags.length == 0
-          flash[:notice] = "No matches. Please try other keywords."
+          flash[:notice] = "No matches. Try again with other keywords."
           redirect_back(fallback_location: "/tags/index")
       end
       return tags
