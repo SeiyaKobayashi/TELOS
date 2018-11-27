@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+
   protect_from_forgery with: :exception
   before_action :set_current_user
 
@@ -10,7 +11,7 @@ class ApplicationController < ActionController::Base
   # Check if it's a valid user and forbid access to certain pages
   def authenticate_user
     if @current_user == nil
-      flash[:notice] = "Login to continue."
+      flash[:notice] = "You're not logged in. Please login to continue."
       redirect_to("/login")
     end
   end
