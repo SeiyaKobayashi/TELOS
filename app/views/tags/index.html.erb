@@ -1,10 +1,14 @@
 <div class="main tags-index">
   <div class="container">
     <!-- Show all tags in descending order -->
-    <% @tags_new.reverse.each do |tag|%>
-      <div class="tags-index-item">
+    <% if @tags_new.empty? %>
+      <div></div>
+    <% else %>
+      <% @tags_new.reverse.each do |tag|%>
+        <div class="tags-index-item">
           <%= link_to("# #{tag.label}", "/tags/#{tag.id}") %>
-      </div>
+        </div>
+      <% end %>
     <% end %>
   </div>
 </div>

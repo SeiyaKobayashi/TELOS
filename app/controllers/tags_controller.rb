@@ -1,31 +1,36 @@
 class TagsController < ApplicationController
 
-    before_action :authenticate_user
+  before_action :authenticate_user
 
-  # List all tags in descending order
+  # Show all tags in descending order (new -> old)
   def index
     tags = Tag.all.order(created_at: :asc)
-    if params[:key] != ""
-        tags = search(tags)
-    end
-    @tags_new = Array.new     # Array to store tags w/o same labels
+    @tags_new = Array.new     # Array to store tags without duplicates
 
-    tags.each do |tag|
-      same = 0     # Bit that represents whether tag has the same label as other tags
-      if @tags_new.length == 0
-        @tags_new.push(tag)
-      else
-        @tags_new.each do |tag_new|
-          # If the same group_id is found, set the bit and jump to next tag
-          if tag.group_id == tag_new.group_id
-            same = 1
-            break
-          end
-        end
-        if same == 1
-          next
-        else
+    if tags.empty?
+      flash[:notice] = 'No tags available.'
+    else
+      if params[:key] != ""
+        tags = search(tags)
+      end
+
+      tags.each do |tag|
+        sb = 0     # Bit representing whether tag has the same label as other tags
+        if @tags_new.length == 0
           @tags_new.push(tag)
+        else
+          @tags_new.each do |tag_new|
+            # If the same group_id is found, set the bit and jump to next tag
+            if tag.group_id == tag_new.group_id
+              sb = 1
+              break
+            end
+          end
+          if sb == 1
+            next
+          else
+            @tags_new.push(tag)
+          end
         end
       end
     end
@@ -33,13 +38,15 @@ class TagsController < ApplicationController
 
   # Search tags
   def search(tags)
-      keyword = params[:key]
-      tags = tags.where('label like ?', "%#{keyword}%")
-      if tags.length == 0
-          flash[:notice] = "No matches. Try again with other keywords."
-          redirect_back(fallback_location: "/tags/index")
-      end
-      return tags
+    keyword = params[:key]
+    tags = tags.where('label like ?', "%#{keyword}%")
+
+    if tags.length == 0
+      flash[:notice] = "No matches. Try again with other keywords."
+      redirect_back(fallback_location: "/tags/index")
+    end
+
+    return tags
   end
 
   # Show tag details (list of posts to which the tag is attached)

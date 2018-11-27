@@ -6,20 +6,25 @@ class PostsController < ApplicationController
   # Show all posts in descending order (new -> old)
   def index
     @posts = Post.all.order(updated_at: :desc)
-    if params[:key] != ""
+    if @posts.empty?
+      flash[:notice] = 'No posts available.'
+    else
+      if params[:key] != ""
         @posts = search(@posts)
+      end
     end
   end
 
   # Search posts
   def search(posts)
-      keyword = params[:key]
-      posts = posts.where('content like ?', "%#{keyword}%")
-      if posts.length == 0
-          flash[:notice] = "No matches. Try again with other keywords."
-          redirect_back(fallback_location: "/posts/index")
-      end
-      return posts
+    keyword = params[:key]
+    posts = posts.where('content like ?', "%#{keyword}%")
+    if posts.length == 0
+      flash[:notice] = "No matches. Try again with other keywords."
+      redirect_back(fallback_location: "/posts/index")
+    end
+
+    return posts
   end
 
   # Show post details (user, date, tags etc.)
