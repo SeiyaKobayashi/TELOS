@@ -12,7 +12,7 @@
 
 ActiveRecord::Schema.define(version: 20180506012127) do
 
-  create_table "group_ids", force: :cascade do |t|
+  create_table "group_ids", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "tag_group_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 20180506012127) do
     t.integer "tag_id"
   end
 
-  create_table "posts", force: :cascade do |t|
+  create_table "posts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.text "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(version: 20180506012127) do
     t.integer "tag_group_id"
   end
 
-  create_table "tags", force: :cascade do |t|
+  create_table "tags", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "label"
     t.integer "post_id"
     t.datetime "created_at", null: false
@@ -37,7 +37,7 @@ ActiveRecord::Schema.define(version: 20180506012127) do
     t.integer "group_id"
   end
 
-  create_table "users", force: :cascade do |t|
+  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
     t.string "email"
     t.string "password"
