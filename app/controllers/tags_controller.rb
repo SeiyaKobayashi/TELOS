@@ -51,12 +51,21 @@ class TagsController < ApplicationController
 
   # Show tag's details, including a list of posts to which the tag is attached.
   def show
-    @tag = Tag.find_by(id: params[:id])
-    posts = GroupId.where(tag_group_id: @tag.group_id)
-    @posts_new = Array.new
+    tags = Tag.where(group_id: params[:id])
+    @tag = tags[0]
+    posts_likes = Array.new
+    @posts = Array.new
 
-    posts.each do |post|
-      @posts_new.push(Post.find_by(id: post.post_id))
+    tags.each do |tag|
+      post = Post.find_by(id: tag.post_id)
+      likes = Like.where(post_id: post.id).length
+      posts_likes.push([post, likes])
+    end
+
+    posts_likes.sort!{|a,b| a[1] <=> b[1]}
+
+    posts_likes.reverse.each do |post_like|
+      @posts.push(post_like[0])
     end
   end
 
@@ -88,11 +97,10 @@ class TagsController < ApplicationController
         redirect_to("/posts/#{@post.id}/tags")
         return
       else
-        tag.group_id = tag.id
-        tag.save
-        # GroupId is a model that stores tag_group_ids, post_ids, and tag_ids
-        group_id = GroupId.new(tag_group_id: tag.group_id, post_id: @post.id, tag_id: tag.id)
+        group_id = GroupId.new(post_id: @post.id, tag_id: tag.id)
         group_id.save
+        tag.group_id = group_id.id
+        tag.save
         flash[:notice] = "A new tag has been added."
         redirect_to("/tags/#{tag.group_id}")
         return
@@ -118,11 +126,11 @@ class TagsController < ApplicationController
           end
         end
         if changed == 0
-          tag.group_id = tag.id
+          group_id = GroupId.new(post_id: @post.id, tag_id: tag.id)
+          group_id.save
+          tag.group_id = group_id.id
         end
         tag.save
-        group_id = GroupId.new(tag_group_id: tag.group_id, post_id: @post.id, tag_id: tag.id)
-        group_id.save
         if changed == 1
           flash[:notice] = "This post has been added to the existing label: '#{tag.label}'."
         else
@@ -138,7 +146,7 @@ class TagsController < ApplicationController
   def delete
     # Retrieve orginal tags attached to the post
     post = Post.find_by(id: params[:id])
-    temp = GroupId.where(post_id: post.id)
+    temp = Tag.where(post_id: post.id)
     tags_old = Array.new
     if temp.length == 0
       flash[:notice] = "Nothing can be deleted. Please attach tags before deleting."
@@ -146,7 +154,7 @@ class TagsController < ApplicationController
       return
     else
       if temp.length == 1
-        tags_old.push(Tag.find_by(id: temp[0].tag_id))
+        tags_old.push(Tag.find_by(id: temp[0].id))
       else
         temp.each do |tag_old|
           tags_old.push(Tag.find_by(id: tag_old.tag_id))
@@ -175,8 +183,6 @@ class TagsController < ApplicationController
     diff = tags_old - tags_new
     if diff.length != 0
       diff.each do |tag_to_be_removed|
-        tag_gid = GroupId.find_by(tag_id: tag_to_be_removed.id)
-        tag_gid.destroy
         tag_to_be_removed.destroy
       end
       flash[:notice] = "Tags have been deleted."

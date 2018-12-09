@@ -40,16 +40,7 @@ class PostsController < ApplicationController
   def show
     @post = Post.find_by(id: params[:id])
     @user = @post.user
-    @tags = GroupId.where(post_id: @post.id)
-    @tags_new = Array.new
-    @tb = 0     # Bit representing whether the post has tags
-
-    if @tags.length != 0
-      @tb = 1
-      @tags.each do |tag|
-        @tags_new.push(Tag.find_by(id: tag.tag_id))
-      end
-    end
+    @tags = Tag.where(post_id: @post.id)
   end
 
   # Create a new post
@@ -91,48 +82,9 @@ class PostsController < ApplicationController
   # This is called from "posts/show.html.erb"
   def delete
     @post = Post.find_by(id: params[:id])
-    post_gid = GroupId.find_by(post_id: @post.id)
-
-    if post_gid == nil
-      @post.destroy
-      flash[:notice] = "Your post has been deleted."
-      redirect_to("/posts/index")
-    else
-      tags = Tag.where(post_id: @post.id)
-      if tags.length == 1
-        delete_tags(tags[0])
-      else
-        tags.each do |tag|
-          delete_tags(tag)
-        end
-      end
-      # After unlinking tags from post, simply destroy the post
-      @post.destroy
-      flash[:notice] = "Your post has been deleted."
-      redirect_to("/posts/index")
-    end
-  end
-
-  def delete_tags(tag)
-    tag_gid = tag.group_id
-    tags_with_that_gid = Tag.where(group_id: tag_gid)
-    # If that tag is attached only to that post
-    if tags_with_that_gid.length == 1
-      gid = GroupId.find_by(tag_id: tag.id)
-      gid.destroy
-      tag.destroy
-    # Otherwise, loop through tags with that group id
-    else
-      tags_with_that_gid.each do |tag_n|
-        if tag_n.post_id == @post.id
-          gid = GroupId.find_by(tag_id: tag_n.id)
-          gid.destroy
-          tag_n.destroy
-        else
-          next
-        end
-      end
-    end
+    @post.destroy
+    flash[:notice] = "Your post has been deleted."
+    redirect_to("/posts/index")
   end
 
 end

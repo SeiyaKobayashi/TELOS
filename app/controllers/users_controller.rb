@@ -20,6 +20,16 @@ class UsersController < ApplicationController
     end
   end
 
+  # Show all of your liked posts
+  def index_mylist
+    @user = User.find_by(id: params[:id])
+    likes = Like.where(user_id: @user.id)
+    @liked_posts = Array.new
+    likes.each do |like|
+      @liked_posts.push(Post.find_by(id: like.post_id))
+    end
+  end
+
   # Search users
   def search(users)
     keyword = params[:key]

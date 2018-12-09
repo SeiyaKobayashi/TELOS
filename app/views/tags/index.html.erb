@@ -6,7 +6,7 @@
     <% else %>
       <% @tags_new.reverse.each do |tag|%>
         <div class="tags-index-item">
-          <%= link_to("# #{tag.label}", "/tags/#{tag.id}") %>
+          <%= link_to("# #{tag.label}", "/tags/#{tag.group_id}") %>
         </div>
       <% end %>
     <% end %>

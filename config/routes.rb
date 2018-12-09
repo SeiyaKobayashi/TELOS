@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  get 'likes/create'
+
+  get 'likes/delete'
+
   get '/' => 'home#top'
   get 'about' => 'home#about'
 
@@ -24,8 +28,12 @@ Rails.application.routes.draw do
   post 'login' => 'users#login'
   post 'logout' => 'users#logout'
   post 'users/:id/delete' => 'users#delete'
+  get 'users/:id/mylist' => 'users#index_mylist'
 
   get 'tags/index' => 'tags#index'
   get 'tags/:id' => 'tags#show'
+
+  post 'likes/create' => 'likes#create'
+  post 'likes/delete' => 'likes#delete'
 
 end
