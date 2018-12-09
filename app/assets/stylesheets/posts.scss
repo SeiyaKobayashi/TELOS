@@ -79,6 +79,18 @@
   font-size: 15px;
 }
 
+.post-like .not-liked {
+  font-size: 18px;
+  float: right;
+  color: black;
+}
+
+.post-like .liked {
+  font-size: 18px;
+  float: right;
+  color: red;
+}
+
 .post-time {
   color: #9b9b9b;
   margin: 10px 0 0px;
