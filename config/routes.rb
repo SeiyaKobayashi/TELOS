@@ -28,6 +28,7 @@ Rails.application.routes.draw do
   post 'login' => 'users#login'
   post 'logout' => 'users#logout'
   post 'users/:id/delete' => 'users#delete'
+  get 'users/:id/mylist' => 'users#index_mylist'
 
   get 'tags/index' => 'tags#index'
   get 'tags/:id' => 'tags#show'
