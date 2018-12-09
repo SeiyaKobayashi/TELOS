@@ -52,12 +52,20 @@ class TagsController < ApplicationController
   # Show tag's details, including a list of posts to which the tag is attached.
   def show
     tags = Tag.where(group_id: params[:id])
-    puts tags
     @tag = tags[0]
-    @posts_new = Array.new
+    posts_likes = Array.new
+    @posts = Array.new
 
     tags.each do |tag|
-      @posts_new.push(Post.find_by(id: tag.post_id))
+      post = Post.find_by(id: tag.post_id)
+      likes = Like.where(post_id: post.id).length
+      posts_likes.push([post, likes])
+    end
+
+    posts_likes.sort!{|a,b| a[1] <=> b[1]}
+
+    posts_likes.reverse.each do |post_like|
+      @posts.push(post_like[0])
     end
   end
 
