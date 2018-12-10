@@ -32,6 +32,7 @@ gem 'rubyzip', '>= 1.2.2'
 gem 'ffi', '>= 1.9.24'
 gem 'rack', '>= 2.0.6'
 gem 'loofah', '>= 2.2.3'
+gem 'data-confirm-modal'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

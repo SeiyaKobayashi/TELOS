@@ -21,13 +21,10 @@
             <input type = "submit" value = "Save">
           </div>
         <% end %>
-        <div class="OR">
-          <p>OR</p>
-        </div>
-        <div class="user-btn">
-          <%= form_tag("/users/#{params[:id]}/delete") do %>
-            <input type = "submit" value = "Delete Account">
-          <% end %>
+        <div class="delete-account">
+          <%= link_to("Delete Account", "/users/#{params[:id]}/delete", method: :post,
+                      data: {confirm: "Are you absolutely sure? This action cannot be undone.\
+                      This will permanently delete the account '#{@current_user.name}' from TELOS."}) %>
         </div>
       </div>
     </div>

@@ -117,16 +117,23 @@
   margin-bottom: 15px;
 }
 
-.OR p {
-  text-align: center;
-}
-
 .user-btn {
   text-align: center;
 }
 
 .button {
   text-align: center;
+}
+
+.delete-account {
+  text-align: center;
+  font-size: 10px;
+  font-weight: 200;
+}
+
+.delete-account :hover {
+  color: #A4A4A4;
+  text-decoration: underline;
 }
 
 /* users/signup, login ========================= */
