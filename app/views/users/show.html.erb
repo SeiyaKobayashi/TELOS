@@ -3,9 +3,9 @@
     <div class="user">
       <img src="<%= "/user_images/#{@user.image_name}" %>">
       <h2><%= @user.name %></h2>
-      <p><%= @user.email %></p>
+      <p><%= @user.short_bio %></p>
       <% if @user.id == @current_user.id %>
-        <%= link_to("Edit", "/users/#{@user.id}/edit") %><br>
+        <%= link_to("Update Profile", "/users/#{@user.id}/edit") %><br>
         <%= link_to("My Vocab List", "/users/#{@user.id}/mylist") %>
       <% end %>
     </div>

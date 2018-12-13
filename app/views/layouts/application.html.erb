@@ -19,9 +19,9 @@
       <ul class="header-menus">
         <% if @current_user %>
           <li>
-            <p>Welcome,&nbsp</p>
-            <%= link_to(@current_user.name, "/users/#{@current_user.id}") %>
-            <p>!</p>
+            <a href="<%= "/users/#{@current_user.id}" %>">
+              <img src="<%= "/user_images/#{@current_user.image_name}" %>">
+            </a>
           </li>
           <% if request.original_fullpath.split('?').first == "/users/index" %>
             <li>
@@ -57,9 +57,7 @@
           <li>
             <a href="/posts/new"><i class="fa fa-edit"></i></a>
           </li>
-          <li>
-            <%= link_to("Logout", "/logout", {method: :post}) %>
-          </li>
+          <li><%= link_to("Logout", "/logout", {method: :post}) %></li>
         <% else %>
           <li>
             <%= link_to("Sign Up", "/signup") %>
