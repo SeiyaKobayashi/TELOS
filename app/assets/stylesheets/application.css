@@ -50,6 +50,10 @@
    cursor: pointer;
  }
 
+ form input[type="submit"]:hover {
+   opacity: 0.8;
+ }
+
  /* Common Layout ========================= */
  body {
    color: #2a2e30;
@@ -62,7 +66,7 @@
    color: #2a2e30;
    background-color: #fffef9;
    position: absolute;
-   top: 60px;
+   top: 70px;
    width: 100%;
    height: auto;
    min-height: 100%;
@@ -78,9 +82,9 @@
  /* Header ========================= */
 
  header {
-   height: 60px;
+   height: 70px;
    position: fixed;
-   z-index: 2;
+   z-index: 3;
    width: 100%;
    background-color: #282826;
  }
@@ -88,17 +92,33 @@
  .header-title * {
    float: left;
    color: white;
-   font-size: 23px;
-   line-height: 60px;
+   font-size: 25px;
+   line-height: 70px;
    padding-left: 20px;
+ }
+
+ .header-title:hover {
+   opacity: 0.8;
+ }
+
+ .header-partition {
+   float: left;
+   color: white;
+   font-size: 15px;
+   line-height: 70px;
+   padding-left:10px;
  }
 
  .header-about * {
    float: left;
    color: white;
-   font-size: 13px;
-   line-height: 60px;
+   font-size: 15px;
+   line-height: 70px;
    padding-left:10px;
+ }
+
+ .header-about:hover {
+   opacity: 0.8;
  }
 
  .header-menus {
@@ -108,39 +128,37 @@
 
  .header-menus li {
    float: left;
-   line-height: 60px;
+   line-height: 70px;
    padding-left: 20px;
  }
 
  .header-menus a {
    float: left;
    color: white;
-   font-size: 14px;
+   font-size: 15px;
  }
 
- .header-menus p {
-   float: left;
-   color: white;
-   font-size: 14px;
+ .header-menus a:hover {
+   opacity: 0.8;
  }
 
  .header-menus .fa {
    float: left;
    color: white;
-   font-size: 20px;
-   line-height: 60px;
+   font-size: 25px;
+   line-height: 70px;
  }
 
- .header-menus li img {
+ .header-menus img {
    width: 35px;
    height: 35px;
    border-radius: 50%;
-   margin: 13px 0 0;
+   margin: 17px 0 0;
    object-fit: cover;
  }
 
  .header-menus li img:hover {
-   opacity: 0.9;
+   opacity: 0.8;
    cursor: pointer;
  }
 

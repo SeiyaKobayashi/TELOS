@@ -89,16 +89,28 @@
   font-size: 15px;
 }
 
+.post-tag a:hover {
+  opacity: 0.6;
+}
+
 .post-like .not-liked {
   font-size: 18px;
   float: right;
   color: black;
 }
 
+.post-like .not-liked:hover {
+  opacity: 0.6;
+}
+
 .post-like .liked {
   font-size: 18px;
   float: right;
   color: red;
+}
+
+.post-like .liked:hover {
+  opacity: 0.6;
 }
 
 .post-like .num-of-likes {
