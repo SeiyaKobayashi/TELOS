@@ -1,5 +1,5 @@
 <div class="main user-show">
-  <div class="user-profile">
+  <div class="user-profile" data-user-posts="<%= @user_posts %>">
     <div class="user">
       <img src="<%= "/user_images/#{@user.image_name}" %>">
       <h2><%= @user.name %></h2>
@@ -9,7 +9,7 @@
       <% end %>
     </div>
     <div class="user-activity-graph">
-
+      <%= javascript_include_tag 'user' %>
     </div>
   </div>
   <div class="user-buttons">

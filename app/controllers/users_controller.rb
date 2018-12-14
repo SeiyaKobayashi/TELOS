@@ -71,6 +71,7 @@ class UsersController < ApplicationController
   # Show user's details (profile image, email ...)
   def show
     @user = User.find_by(id: params[:id])
+    @user_posts = @user.posts.to_json
   end
 
   # This is called from "show.html.erb"
