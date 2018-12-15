@@ -48,8 +48,8 @@
   float: left;
   width: 25%;
   height: 600px;
-  padding: 30px 10px 10px 10px;
-  margin: 20px 0px 10px auto;
+  padding: 25px 0 10px 10px;
+  margin: 10px 0px 10px auto;
   box-sizing: border-box;
 }
 
@@ -110,7 +110,31 @@
 }
 
 .user-activity-graph {
-  height: 310px;
+  height: 300px;
+}
+
+.graph-title {
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.graph-descriptions {
+  font-size: 10px;
+}
+
+.bar {
+  fill: #4AEAEA;
+  opacity: 0.8;
+}
+
+.yAxis path {
+  fill: none;
+  display: none;
+}
+
+.label {
+  font-size: 15px;
+  font-weight: 600;
 }
 
 .container-user .posts-index-item-user {

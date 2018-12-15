@@ -1,7 +1,13 @@
 data = $('.user-profile').data("user-posts");
+
 // e.g.) 2018-12-09T20:04:48.000Z (rails' applicationrecord) --> 2018-12-09 (more tractable format)
 data_created_at = data.map(function(d) {
   return d.created_at.split("T")[0];
+});
+
+// e.g. 2018-12-09 --> 12-09
+data_created_at_simplified = data_created_at.map(function(d) {
+  return d.slice(-5);
 });
 
 var dOne = new Date();
@@ -48,90 +54,91 @@ dFive = parseTime(dFive);
 dSix = parseTime(dSix);
 dSeven = parseTime(dSeven);
 
-week = [];
-week.push(dOne);
-week.push(dTwo);
-week.push(dThree);
-week.push(dFour);
-week.push(dFive);
-week.push(dSix);
-week.push(dSeven);
+week = [dOne, dTwo, dThree, dFour, dFive, dSix, dSeven];
+week_simplified = week.map(function(d) {
+  return d.slice(-5);
+});
 
 // Create a dictionary that stores {date: count of posts on that date} pairs.
 var postCounts = {};
-data_created_at.forEach(function(c) {
+data_created_at_simplified.forEach(function(c) {
   postCounts[c] = (postCounts[c] || 0) + 1;
 });
 
 // Get the number of posts in each day for the most recent week.
-var dataGraph = {};
-week.forEach(function(d) {
+var dataGraph = [];
+week_simplified.forEach(function(d) {
   if (postCounts[d] != null) {
-    dataGraph[d] = postCounts[d];
+    dataGraph.push({
+      date: d,
+      count: postCounts[d]
+    });
   } else {
-    dataGraph[d] = 0;
+    dataGraph.push({
+      date: d,
+      count: 0
+    });
   }});
 
 //------ d3 starts from here -------//
 // Set margin, width and height of SVG
-const margin = {top: 20, right: 10, bottom: 20, left:37};
-const width = 250 - margin.left - margin.right;
-const height = 350 - margin.top - margin.bottom;
-
-function findMaxValue(d) {
-  dList = [];
-  for (var k in d) {
-    dList.push(d[k]);
-  }
-  return Math.max.apply(null, dList);
-}
-
-var maxNumOfPosts = findMaxValue(dataGraph);
-
-// 0 --> 0, Max number of posts --> width
-var x = d3.scale.linear()
-                .domain([0, maxNumOfPosts+2])
-                .range([0, width]);
-
-xAxis = d3.axisTop(x).ticks(maxNumOfPosts+1);
-
-dOneParsed = new Date(dOne);
-dSevenParsed = new Date(dSeven);
-
-// Oldest date --> 0, Newest date --> height
-var y = d3.scaleTime()
-          .domain([dOneParsed, dSevenParsed])
-          .range([0, height]);
-
-yAxis = d3.axisLeft(y).tickFormat(d3.timeFormat("%m/%e")).ticks(8);
+const margin = {top: 10, right: 20, bottom: 20, left:35};
+const width = 350 - margin.left - margin.right;
+const height = 360 - margin.top - margin.bottom;
 
 var svg = d3.select('.user-activity-graph')
             .append('svg')
             .attr('width', width)
-            .attr('height', height);
+            .attr('height', height)
+            .append('g')
+            .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
 
-var chart = svg.append('g')
-               .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
+// 0 --> 0, Max number of posts --> width
+var x = d3.scaleLinear()
+          .domain([0, d3.max(dataGraph, function(d) {
+            return d.count;
+          })])
+          .range([0, width-50]);
 
-chart.append("g")
-   .classed("x axis", true)
-   .call(xAxis);
+// Oldest date --> 0, Newest date --> height
+var y = d3.scaleBand()
+          .rangeRound([height, 0])
+          .padding(0.4)
+          .domain(dataGraph.map(function(d) {
+            return d.date;
+        }));
 
-chart.append("g")
-     .classed("y axis", true)
-     .call(yAxis);
+yAxis = d3.axisLeft(y).tickSize(0);
 
-// var bars = chart.selectAll('rect.bar')
-//                 .data(data);
-// bars.enter()
-//     .append('rect')
-//     .attr('class', 'bar');
-//
-// bars.attr('x', 0)
-//     .attr('y', function(d) {
-//       return y(d);
-//     })
-//     .attr('height', y.rangeBand())
-//     .attr('width', function(d) {
-//       return x(d);
-//     });
+var gy = svg.append('g')
+            .classed('yAxis', true)
+            .call(yAxis);
+
+var bars = svg.selectAll('.bar')
+              .data(dataGraph)
+              .enter()
+              .append('g');
+
+bars.append('rect')
+    .classed('bar', true)
+    .attr('y', function (d) {
+      return y(d.date);
+    })
+    .attr('height', y.bandwidth())
+    .attr('x', 0)
+    .attr('width', function (d) {
+      return x(d.count);
+    })
+    .attr();
+
+bars.append('text')
+    .classed('label', true)
+    .attr('y', function (d) {
+      return y(d.date) + y.bandwidth() / 2 + 4;
+    })
+    .attr('x', function (d) {
+      return x(d.count) + 5;
+    })
+    .text(function (d) {
+      return d.count;
+    });
