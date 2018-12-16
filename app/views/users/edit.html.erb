@@ -1,5 +1,5 @@
 <div class="main users-edit">
-  <div class="container">
+  <div class="container-users-edit">
     <div class="user-new-heading">Edit Your Profile</div>
     <div class="form users-form">
       <div class="form-body">
@@ -9,25 +9,25 @@
               <%= message %>
             </div>
           <% end %>
-          <p>Username</p>
+          <p>Username<font color="red">*</font></p>
           <input name = "name" value= <%= @user.name %>>
           <p>Profile Photo</p>
           <input name="image" type="file">
-          <p>Email Address</p>
+          <p>Email Address<font color="red">*</font></p>
           <input name = "email" value= <%= @user.email %>>
-          <p>Password</p>
+          <p>Password<font color="red">*</font></p>
           <input name = "password" value= <%= @user.password %>>
+          <p>Short Bio</p>
+          <textarea name = "bio"><%= @user.short_bio %></textarea>
+          <p><font color="red">* fields are required.</font></p>
           <div class="user-btn">
             <input type = "submit" value = "Save">
           </div>
         <% end %>
-        <div class="OR">
-          <p>OR</p>
-        </div>
-        <div class="user-btn">
-          <%= form_tag("/users/#{params[:id]}/delete") do %>
-            <input type = "submit" value = "Delete Account">
-          <% end %>
+        <div class="delete-account">
+          <%= link_to("Delete Account", "/users/#{params[:id]}/delete", method: :post,
+                      data: {confirm: "Are you absolutely sure? This action cannot be undone.\
+                      This will permanently delete the account '#{@current_user.name}' from TELOS."}) %>
         </div>
       </div>
     </div>

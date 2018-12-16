@@ -40,7 +40,52 @@
 
 /* users/show ================================ */
 .user-show {
+  padding: 20px 10px;
   text-align: center;
+}
+
+.user-profile {
+  float: left;
+  width: 25%;
+  height: 600px;
+  padding: 20px 0 10px 10px;
+  margin: 0 0px 0 auto;
+  box-sizing: border-box;
+}
+
+.profile-update a {
+  font-size: 11px;
+}
+
+.user-buttons {
+  float: right;
+  width: 75%;
+}
+
+.user-buttons button {
+  display:inline-block;
+  width: 95px;
+  height: 30px;
+  border: 1px transparent;
+  background-color: #ECEBEB;
+  font-size: 15px;
+  margin-top: 15px;
+}
+
+.user-buttons button:hover {
+  opacity: 0.8;
+}
+
+.user-posts-link button .clicked {
+  background-color: black;
+}
+
+.container-user {
+  float: right;
+  width: 75%;
+  padding: 10px 80px 40px 40px;
+  margin: 10px 0 30px auto;
+  box-sizing: border-box;
 }
 
 .user {
@@ -48,22 +93,21 @@
 }
 
 .user img {
-  width: 80px;
-  height: 80px;
-  border-radius: 40%;
-  box-shadow: 0 2px 6px #c1ced7;
-  margin: 20px 0 10px;
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  margin: 8px 0;
   object-fit: cover;
 }
 
 .user h2 {
-  font-size: 20px;
+  font-size: 24px;
   font-weight: 600;
-  line-height: 1.2;
+  line-height: 1.4;
 }
 
 .user p {
-  font-size: 13px;
+  font-size: 14px;
   margin-bottom: 15px;
 }
 
@@ -71,6 +115,73 @@
   color: #8899a6;
   text-decoration: underline;
   font-weight: 200;
+}
+
+.user-activity-graph {
+  height: 300px;
+}
+
+.graph-title {
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.graph-descriptions {
+  font-size: 10px;
+}
+
+.bar {
+  fill: #4AEAEA;
+  opacity: 0.8;
+}
+
+.yAxis path {
+  fill: none;
+  display: none;
+}
+
+.label {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.container-user .posts-index-item-user {
+  width: 100%;
+  height: auto;
+  padding: 13px 25px;
+  background-color: white;
+  overflow: hidden;
+  box-shadow: 0 2px 4px #898882;
+}
+
+.post-left-user {
+  float: left;
+  width: 10%;
+}
+
+.post-right-user {
+  float: left;
+  width: 90%;
+  padding: 10px 10px 0 30px;
+  text-align: left;
+}
+
+.post-left-user img {
+  width: 50px;
+  height: 50px;
+  margin-top: 8px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.post-likes-user {
+  margin-top: 8px;
+  font-size: 14px;
+  color: grey;
+}
+
+.post-likes-user .liked {
+  color: #FA3A3A;
 }
 
 .user span {
@@ -105,10 +216,19 @@
 }
 
 /* users/new, users/edit ================================ */
+
+.users-edit {
+  padding: 20px 10px;
+}
+
+.container-users-edit {
+  margin: 20px;
+}
+
 .user-new-heading {
   text-align: center;
-  margin: 60px 0 20px;
-  font-size: 40px;
+  margin: 0 0 20px;
+  font-size: 35px;
   font-weight: 600;
   color: #232321;
 }
@@ -117,16 +237,23 @@
   margin-bottom: 15px;
 }
 
-.OR p {
-  text-align: center;
-}
-
 .user-btn {
   text-align: center;
 }
 
 .button {
   text-align: center;
+}
+
+.delete-account {
+  text-align: center;
+  font-size: 10px;
+  font-weight: 200;
+}
+
+.delete-account :hover {
+  color: #A4A4A4;
+  text-decoration: underline;
 }
 
 /* users/signup, login ========================= */

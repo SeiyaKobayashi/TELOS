@@ -50,7 +50,7 @@ class PostsController < ApplicationController
 
   # This is called from "posts/new.html.erb"
   def create
-    @post = Post.new(content: "#{params[:word]}: #{params[:definition]}\r\n#{params[:sentence]}",
+    @post = Post.new(content: "#{params[:word]} (#{params[:pos]}): #{params[:definition]}\r\n#{params[:sentence]}",
                      user_id: @current_user.id)
 
     if @post.save

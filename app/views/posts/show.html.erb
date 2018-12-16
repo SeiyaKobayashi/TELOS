@@ -48,7 +48,7 @@
         <!-- If it's his/her own post, make it editable -->
         <% if @post.user_id == @current_user.id %>
           <%= link_to("Edit", "/posts/#{@post.id}/edit") %>
-          <%= link_to("Delete", "/posts/#{@post.id}/delete", {method:"post"}) %>
+          <%= link_to("Delete", "/posts/#{@post.id}/delete", method: :post, data: {confirm: "Are you sure to delete?"}) %>
         <% end %>
       </div>
     </div>
