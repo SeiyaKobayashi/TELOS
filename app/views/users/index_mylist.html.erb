@@ -3,14 +3,16 @@
     <div class="user">
       <img src="<%= "/user_images/#{@user.image_name}" %>">
       <h2><%= @user.name %></h2>
-      <p><%= @user.short_bio %></p>
+      <% if @user.id == @current_user.id %>
+        <div class="profile-update">
+          <%= link_to("Update Profile", "/users/#{@user.id}/edit") %>
+        </div>
+      <% end %>
+      <p><%= simple_format(@user.short_bio) %></p>
       <p>
         <%= link_to("Posts", "/users/#{@user.id}") %>: <%= @posts_count %> |
         <%= link_to("Likes", "/users/#{@user.id}/mylist") %>: <%= @likes_count %>
       </p>
-      <% if @user.id == @current_user.id %>
-        <%= link_to("Update Profile", "/users/#{@user.id}/edit") %><br>
-      <% end %>
     </div>
     <div class="user-activity-graph">
       <% if @user.id == @current_user.id %>

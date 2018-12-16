@@ -62,6 +62,12 @@
    min-height: 1vh;
  }
 
+ body #wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
  .main {
    color: #2a2e30;
    background-color: #fffef9;
@@ -232,3 +238,5 @@
    height: 24px;
    letter-spacing: 1px;
  }
+
+ /* Footer ========================= */

@@ -1,5 +1,5 @@
 <div class="main posts-new">
-  <div class="container">
+  <div class="container-posts-new">
     <h1 class="posts-new-heading">Create a New Post</h1>
     <!-- Redirect to "/posts/create" when "Post" button is clicked -->
     <%= form_tag("/posts/create") do %>
@@ -11,12 +11,15 @@
             </div>
           <% end %>
           <div class="form-inputs">
-            <p>Word/Phrase (単語/フレーズ)</p>
-            <input name = "word" placeholder = "e.g.) Apple" required>
-            <p>Definition/Explanation (意味/説明)</p>
-            <input name = "definition" placeholder = "e.g.) リンゴ " required>
-            <p>(Optional*) Sample Sentence (例文)</p>
-            <textarea name = "sentence" placeholder = "e.g.) I have an apple. "></textarea>
+            <p>Word/Phrase<font color="red">*</font> (単語/フレーズ)</p>
+            <input name = "word" placeholder = "e.g.) Excelsior!" required>
+            <p>Parts of Speech<font color="red">*</font> (品詞)</p>
+            <input name = "pos" placeholder = "e.g.) interj." required>
+            <p>Definition/Explanation<font color="red">*</font> (意味/説明)</p>
+            <input name = "definition" placeholder = "e.g.) より高く！ " required>
+            <p>Sample Sentence (例文)</p>
+            <textarea name = "sentence" placeholder = "e.g.) The New York State motto 'Excelsior' means 'Ever Upward' in Latin."></textarea>
+            <p><font color="red">* fields are required.</font></p>
           </div>
           <div class="button">
             <input type= "submit" value = "Post">
