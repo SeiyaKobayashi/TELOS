@@ -23,10 +23,13 @@ class UsersController < ApplicationController
   # Show all of your liked posts
   def index_mylist
     @user = User.find_by(id: params[:id])
-    likes = Like.where(user_id: @user.id)
-    @liked_posts = Array.new
+    @posts_count = @user.posts.count
+    @likes_count = @user.likes.count
+    likes = @user.likes
+    @user_likes = @user.likes.to_json
+    @user_liked_posts = Array.new
     likes.each do |like|
-      @liked_posts.push(Post.find_by(id: like.post_id))
+      @user_liked_posts.push(Post.find_by(id: like.post_id))
     end
   end
 
@@ -71,6 +74,8 @@ class UsersController < ApplicationController
   # Show user's details (profile image, email ...)
   def show
     @user = User.find_by(id: params[:id])
+    @posts_count = @user.posts.count
+    @likes_count = @user.likes.count
     @user_posts = @user.posts.to_json
   end
 

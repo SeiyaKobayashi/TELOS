@@ -1,15 +1,25 @@
 <div class="main user-show">
-  <div class="user-profile">
+  <div class="user-profile" data-user-likes="<%= @user_likes %>">
     <div class="user">
       <img src="<%= "/user_images/#{@user.image_name}" %>">
       <h2><%= @user.name %></h2>
       <p><%= @user.short_bio %></p>
+      <p>
+        <%= link_to("Posts", "/users/#{@user.id}") %>: <%= @posts_count %> |
+        <%= link_to("Likes", "/users/#{@user.id}/mylist") %>: <%= @likes_count %>
+      </p>
       <% if @user.id == @current_user.id %>
         <%= link_to("Update Profile", "/users/#{@user.id}/edit") %><br>
       <% end %>
     </div>
     <div class="user-activity-graph">
-
+      <% if @user.id == @current_user.id %>
+        <p class="graph-title">Your Recent Activity (Likes)</p>
+        <p class="graph-descriptions">How Many Words Have You Liked So Far?</p>
+      <% else %>
+        <p class="graph-title">Recent Activity (Likes)</p>
+      <% end %>
+      <%= javascript_include_tag 'user_likes' %>
     </div>
   </div>
   <div class="user-buttons">
@@ -21,8 +31,8 @@
     <button><%= link_to("Liked Posts", "/users/#{@user.id}/mylist") %></button>
   </div>
   <div class="container-user">
-    <% if @liked_posts.length != 0 %>
-        <% @liked_posts.reverse.each do |post|%>
+    <% if @user_liked_posts.length != 0 %>
+        <% @user_liked_posts.reverse.each do |post|%>
           <div class="posts-index-item-user">
             <div class="post-left-user">
               <img src="<%= "/user_images/#{post.user.image_name}" %>">

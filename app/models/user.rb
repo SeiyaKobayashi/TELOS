@@ -6,9 +6,14 @@ class User < ApplicationRecord
 
   has_many :likes, dependent: :destroy
 
-  # List of posts related to the given user_id
+  # Array of posts given user_id
   def posts
     return Post.where(user_id: self.id)
+  end
+
+  # Array of likes given user_id
+  def likes
+    return Like.where(user_id: self.id)
   end
 
 end

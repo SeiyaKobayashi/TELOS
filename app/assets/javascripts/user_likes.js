@@ -1,7 +1,7 @@
 // Make sure JS works without reloading.
-document.addEventListener("turbolinks:load", function() {
+document.addEventListener('turbolinks:load', function() {
   removeGraph();
-  data = $('.user-profile').data("user-posts");
+  data = $('.user-profile').data("user-likes");
   d = parseData(data);
   drawGraph(d);
 });
@@ -52,18 +52,18 @@ function parseData(d) {
   });
 
   // Create a dictionary that stores {date: count of posts on that date} pairs.
-  var postCounts = {};
+  var likeCounts = {};
   data_created_at_simplified.forEach(function(c) {
-    postCounts[c] = (postCounts[c] || 0) + 1;
+    likeCounts[c] = (likeCounts[c] || 0) + 1;
   });
 
   // Get the number of posts in each day for the most recent week.
   var dataGraph = [];
   week_simplified.forEach(function(d) {
-    if (postCounts[d] != null) {
+    if (likeCounts[d] != null) {
       dataGraph.push({
         date: d,
-        count: postCounts[d]
+        count: likeCounts[d]
       });
     } else {
       dataGraph.push({
