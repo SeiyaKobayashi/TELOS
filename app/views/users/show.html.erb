@@ -9,8 +9,8 @@
         </div>
       <% end %>
       <p><%= simple_format(@user.short_bio) %></p>
-      <p>
-        <%= link_to("Posts", "/users/#{@user.id}") %>: <%= @posts_count %>|
+      <p class="user-stats">
+        <%= link_to("Posts", "/users/#{@user.id}") %>: <%= @posts_count %> |
         <%= link_to("Likes", "/users/#{@user.id}/mylist") %>: <%= @likes_count %>
       </p>
     </div>

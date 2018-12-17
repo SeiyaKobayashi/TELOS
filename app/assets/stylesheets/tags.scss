@@ -3,15 +3,27 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 /* tags/index ================================ */
+
+.tags-index {
+  padding: 20px 10px;
+}
+
+.container-tags-index {
+  max-width: 800px;
+  margin: 50px auto;
+  clear: both;
+}
+
 .tags-index-item {
-  padding: 20px 30px;
+  padding: 15px 35px;
   background-color: white;
   overflow: hidden;
   box-shadow: 0 2px 4px #898882;
+  word-wrap: break-word;
 }
 
 .tags-index-item a {
-  font-size: 16px;
+  font-size: 17px;
 }
 
 .tags-index-item a:hover {
@@ -19,58 +31,86 @@
 }
 
 /* tags/show ================================ */
-.tags-show-item {
-  padding: 22px;
-  background-color: white;
-  box-shadow: 0 2px 4px #898882;
-  overflow: hidden;
-  display: table;
-  width: 100%;
+
+.tags-show {
+  padding: 20px 10px;
+}
+
+.container-tags-show {
+  max-width: 800px;
+  margin: 30px auto;
+  clear: both;
 }
 
 .tag-name {
   text-align: center;
   margin-bottom: 10px;
+  word-wrap: break-word;
 }
 
 .tag-name a {
   font-weight: 250;
-  margin: 60px 0 20px;
   font-size: 35px;
 }
 
-.tags-show-item img {
-  width: 55px;
-  height: 55px;
-  margin-left: 5px;
-  border-radius: 40%;
-  box-shadow: 0 2px 4px #c1ced7;
-  vertical-align: middle;
-  object-fit: cover;
-}
-
-.post-user-name a {
-  font-weight: 650;
-}
-
-.post-user-name a:hover {
+.tag-name a:hover {
   color: #9b9b9b;
 }
 
-.post-left {
-  float: left;
-  width: 10%;
+.tags-show-item {
+  width: 100%;
+  height: auto;
+  padding: 10px 0;
+  background-color: white;
+  overflow: hidden;
+  box-shadow: 0 2px 4px #898882;
 }
 
-.post-right {
+.post-left-tag {
+  display: block;
   float: left;
-  width: 90%;
-  padding-left: 25px;
-  text-align: left;
-  padding-bottom: 8px;
+  width: 20%;
+  padding: 10px 15px 0 15px;
+  text-align: center;
+  word-wrap: break-word;
+}
+
+.post-left-tag img {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.post-user-name-tag a {
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.post-user-name-tag a:hover {
+  color: #9b9b9b;
+}
+
+.post-right-tag {
+  display: block;
+  float: left;
+  width: 80%;
+  padding: 10px 30px 10px 0;
+  word-wrap: break-word;
+}
+
+.post-likes-tag {
+  margin-top: 8px;
+  font-size: 15px;
+  color: grey;
+}
+
+.post-likes-tag .liked {
+  color: #FA3A3A;
 }
 
 /* tags/new ========================== */
+
 .tag-heading {
   text-align: center;
   margin: 60px 0 20px;

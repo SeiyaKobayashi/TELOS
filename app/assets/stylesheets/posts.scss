@@ -2,7 +2,8 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-/* posts/index ================================ */
+/* posts/index */
+
 .posts-index {
   padding: 20px 10px;
 }
@@ -14,18 +15,21 @@
 }
 
 .posts-index-item {
-  padding: 12px 0 12px 0;
+  width: 100%;
+  height: auto;
+  padding: 10px 0;
   background-color: white;
   overflow: hidden;
   box-shadow: 0 2px 4px #898882;
 }
 
 .post-left {
+  display: block;
   float: left;
   width: 20%;
-  height: 80px;
   text-align: center;
-  padding: 4px 0 0 22px;
+  padding: 8px 20px 0 20px;
+  word-wrap: break-word;
 }
 
 .post-left img {
@@ -45,22 +49,16 @@
 }
 
 .post-right {
+  display: block;
   float: left;
-  width: 70%;
+  width: 80%;
   text-align: left;
-  height: 60px;
-  padding: 10px 0 0 10px;
-}
-
-.post-right a {
-  float: left;
-  width: 100%;
-  text-align: left;
-  padding: 2px 0 4px 10px;
+  padding: 10px 50px 0 0;
+  word-wrap: break-word;
 }
 
 .post-likes {
-  margin: 5px 0 0 11px;
+  margin-top: 5px;
   font-size: 15px;
   color: grey;
 }
@@ -69,40 +67,54 @@
   color: #FA3A3A;
 }
 
-/* posts/show ================================ */
-.posts-show form {
-  display: inline;
+/* posts/show */
+
+.posts-show {
+  padding: 20px 10px;
+}
+
+.container-posts-show {
+  max-width: 750px;
+  margin: 50px auto;
+  clear: both;
 }
 
 .posts-show-item {
-  padding: 30px;
+  padding: 40px 50px;
   background-color: white;
   box-shadow: 0 2px 4px #898882;
   overflow: hidden;
+  word-wrap: break-word;
 }
 
 .posts-show-item img {
   width: 60px;
   height: 60px;
-  border-radius: 40%;
+  border-radius: 50%;
   box-shadow: 0 2px 4px #c1ced7;
   vertical-align: middle;
   object-fit: cover;
 }
 
-.posts-show-item .post-user-name a {
+.post-user-name-show a {
   vertical-align: middle;
+  font-weight: 600;
   font-size: 25px;
   margin-left: 15px;
 }
 
-.posts-show-item .post-user-name a:hover {
+.post-user-name-show a:hover {
   color: #9b9b9b;
 }
 
 .posts-show-item p {
   font-size: 23px;
-  margin: 20px 0;
+  margin: 20px 5px;
+}
+
+.post-tag {
+  margin-left: 5px;
+  word-wrap: break-word;
 }
 
 .post-tag a {
@@ -142,28 +154,41 @@
 
 .post-time {
   color: #9b9b9b;
-  margin: 10px 0 0px;
+  margin: 15px 0 0 5px;
 }
 
 .post-menus {
   float: right;
 }
 
-.post-menus a, .post-menus input {
+.post-menus a {
   color: #9b9b9b;
   text-decoration: underline;
   font-size: 15px;
 }
 
-/* posts/edit ========================= */
-.post-new-heading {
-   text-align: center;
-   margin: 60px 0 20px;
-   font-size: 40px;
-   color: #232321;
+.post-menus a:hover {
+  opacity: 0.6;
 }
 
-/* posts/new ========================= */
+/* posts/edit */
+
+.posts-edit {
+  padding: 20px 10px;
+}
+
+.container-post-edit {
+  margin: 20px;
+}
+
+.post-edit-heading {
+  text-align: center;
+  margin: 0 0 20px;
+  font-size: 35px;
+  color: #232321;
+}
+
+/* posts/new */
 
 .posts-new {
   padding: 20px 10px;
