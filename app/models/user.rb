@@ -16,4 +16,14 @@ class User < ApplicationRecord
     return Like.where(user_id: self.id)
   end
 
+  # Who are you following
+  def following
+    return Relationship.where(follower_id: self.id)
+  end
+
+  # By whom are you followed
+  def followed
+    return Relationship.where(followed_id: self.id)
+  end
+
 end

@@ -76,7 +76,45 @@ class UsersController < ApplicationController
     @user = User.find_by(id: params[:id])
     @posts_count = @user.posts.count
     @likes_count = @user.likes.count
+    @user_following_count = @user.following.count
+    @user_followed_count = @user.followed.count
     @user_posts = @user.posts.to_json
+  end
+
+  # This is called from "show.html.erb"
+  def relationships_following_private
+    following_users = Relationship.where(follower_id: @current_user.id)
+    @my_users = Array.new
+    for user in following_users do
+      @my_users.push(User.find_by(id: user.followed_id))
+    end
+  end
+
+  # This is called from "show.html.erb"
+  def relationships_following
+    following_users = Relationship.where(follower_id: params[:id])
+    @my_users = Array.new
+    for user in following_users do
+      @my_users.push(User.find_by(id: user.followed_id))
+    end
+  end
+
+  # This is called from "show.html.erb"
+  def relationships_follower_private
+    followed_users = Relationship.where(followed_id: @current_user.id)
+    @my_users = Array.new
+    for user in followed_users do
+      @my_users.push(User.find_by(id: user.follower_id))
+    end
+  end
+
+  # This is called from "show.html.erb"
+  def relationships_follower
+    followed_users = Relationship.where(followed_id: params[:id])
+    @my_users = Array.new
+    for user in followed_users do
+      @my_users.push(User.find_by(id: user.follower_id))
+    end
   end
 
   # This is called from "show.html.erb"
