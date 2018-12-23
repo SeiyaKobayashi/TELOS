@@ -1,4 +1,5 @@
-/* top ========================= */
+/* top */
+
 .top-main {
   text-align: center;
   position: absolute;
@@ -12,7 +13,6 @@
 
 .top-main img {
     width: 100%;
-    // height: 726px;
     height: auto;
     opacity: 0.5;
 }
@@ -43,9 +43,9 @@
   transform: translate(-50%,-50%);
   -ms-transform: translate(-50%,-50%);
   -webkit-transform: translate(-50%,-50%);
-  margin:0;
+  margin-top: 10px;
   padding:0;
-  font-size: 30px;
+  font-size: 27px;
 }
 
 .top-description-2 {
@@ -55,13 +55,22 @@
   transform: translate(-50%,-50%);
   -ms-transform: translate(-50%,-50%);
   -webkit-transform: translate(-50%,-50%);
-  margin:0;
+  margin-top: 10px;
   padding:0;
-  font-size: 25px;
+  font-size: 18px;
   font-style: oblique;
 }
 
-/* about ========================= */
+.top-description-2 a {
+  text-decoration: underline;
+}
+
+.top-description-2 a:hover {
+  opacity: 0.6;
+}
+
+/* about */
+
 .about-main {
     // padding: 150px 0 100px;
     text-align: center;
@@ -76,7 +85,6 @@
 
 .about-main img {
     width: 100%;
-    // height: 726px;
     height: auto;
     opacity: 0.5;
 }
@@ -111,7 +119,8 @@
   -webkit-font-smoothing: antialiased;
 }
 
-/* Form ========================= */
+/* Form */
+
 .form {
   max-width: 750px;
   margin: 0 auto;
@@ -170,7 +179,8 @@
   clear: both;
 }
 
-/* Flash ========================= */
+/* Flash */
+
 .flash {
   padding: 10px 0;
   color: white;

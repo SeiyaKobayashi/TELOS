@@ -14,7 +14,8 @@
  *= require_self
  */
 
- /* SetUp ========================= */
+ /* SetUp */
+
  * {
    box-sizing: border-box;
  }
@@ -54,7 +55,8 @@
    opacity: 0.8;
  }
 
- /* Common Layout ========================= */
+ /* Common Layout */
+
  body {
    color: #2a2e30;
    background-color: #fffef9;
@@ -85,7 +87,7 @@
    clear: both;
  }
 
- /* Header ========================= */
+ /* Header */
 
  header {
    height: 70px;
@@ -239,4 +241,4 @@
    letter-spacing: 1px;
  }
 
- /* Footer ========================= */
+ /* Footer */

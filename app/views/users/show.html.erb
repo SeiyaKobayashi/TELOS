@@ -11,20 +11,22 @@
         <% if Relationship.find_by(follower_id: @current_user.id, followed_id: params[:id]) != nil %>
           <div class="user-follow-button">
             <button>
-              <%= link_to "Following", controller: 'relationships', action: 'delete', id: params[:id],
-                                       method: :post, data: {confirm: "Unfollow this user?"} %>
+              <%= link_to "Following", {controller: 'relationships', action: 'delete', id: params[:id]},
+                                        method: :post, data: {confirm: "Unfollow this user?"} %>
             </button>
           </div>
         <% elsif Relationship.find_by(follower_id: params[:id], followed_id: @current_user.id) != nil %>
           <div class="user-follow-button">
             <button>
-              <%= link_to "Follow Back", controller: 'relationships', action: 'create', id: params[:id], method: :post %>
+              <%= link_to "Follow Back", {controller: 'relationships', action: 'create', id: params[:id]},
+                                          method: :post, data: {confirm: "Follow this user?"} %>
             </button>
           </div>
         <% else %>
           <div class="user-follow-button">
             <button>
-              <%= link_to "Follow", controller: 'relationships', action: 'create', id: params[:id], method: :post %>
+              <%= link_to "Follow", {controller: 'relationships', action: 'create', id: params[:id]},
+                                     method: :post, data: {confirm: "Follow this user?"} %>
             </button>
           </div>
         <% end %>

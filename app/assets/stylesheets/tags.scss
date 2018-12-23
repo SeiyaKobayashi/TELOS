@@ -1,8 +1,4 @@
-// Place all the styles related to the tags controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
-
-/* tags/index ================================ */
+/* tags/index */
 
 .tags-index {
   padding: 20px 10px;
@@ -30,7 +26,7 @@
   color: #9b9b9b;
 }
 
-/* tags/show ================================ */
+/* tags/show */
 
 .tags-show {
   padding: 20px 10px;
@@ -109,16 +105,28 @@
   color: #FA3A3A;
 }
 
-/* tags/new ========================== */
+/* tags/new */
 
-.tag-heading {
+.tags-new {
+  padding: 20px 10px;
+}
+
+.container-tags-new {
+  margin: 20px;
+}
+
+.tags-new-heading {
   text-align: center;
-  margin: 60px 0 20px;
-  font-size: 40px;
+  margin: 0 0 20px;
+  font-size: 35px;
+  font-weight: bold;
   color: #232321;
 }
 
+.container-tags-new textarea {
+  padding: 5px;
+}
+
 .button {
-  margin-top: 10px;
   text-align: center;
 }
