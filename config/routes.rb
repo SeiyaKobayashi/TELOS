@@ -11,8 +11,7 @@ Rails.application.routes.draw do
   post 'posts/:id/update' => 'posts#update'
   post 'posts/:id/delete' => 'posts#delete'
   get 'posts/:id/tags' => 'tags#new'
-  post 'posts/:id/tags/create' => 'tags#create'
-  post 'posts/:id/tags/delete' => 'tags#delete'
+  post 'posts/:id/tags/edit' => 'tags#edit'
 
   get 'users/index' => 'users#index'
   get 'signup' => 'users#new'

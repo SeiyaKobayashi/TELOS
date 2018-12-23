@@ -1,36 +1,15 @@
 <div class="main tags-new">
   <div class="container">
-    <h1 class="tag-heading">Attach Tags</h1>
-    <!-- Redirect to "/tags/create" when "Add" button is clicked -->
-    <%= form_tag("/posts/#{@post.id}/tags/create") do %>
+    <!-- Redirect to ".../tags/edit" when "Update" button is clicked -->
+    <h1 class="tag-heading">Edit Tags</h1>
+    <%= form_tag("/posts/#{@post.id}/tags/edit") do %>
       <div class="form">
         <div class="form-body">
           <% @post.errors.full_messages.each do |message| %>
-            <div class="form-error">
-              <%= message %>
-            </div>
+            <div class="form-error"><%= message %></div>
           <% end %>
-          <input name = "label" value = <%= @tag.label %>>
-          <div class="button">
-            <input type="submit" value="Add">
-          </div>
-        </div>
-      </div>
-    <% end %>
-    <!-- Redirect to "/tags/delete" when "Delete" button is clicked -->
-    <h1 class="tag-heading">Delete Tags</h1>
-    <%= form_tag("/posts/#{@post.id}/tags/delete") do %>
-      <div class="form">
-        <div class="form-body">
-          <% @post.errors.full_messages.each do |message| %>
-            <div class="form-error">
-              <%= message %>
-            </div>
-          <% end %>
-          <textarea name = "tags"><%= @tags_list %></textarea>
-          <div class="button">
-            <input type="submit" value="Delete">
-          </div>
+          <textarea name="tags"><%= @tags %></textarea>
+          <div class="button"><input type="submit" value="Update"></div>
         </div>
       </div>
     <% end %>
