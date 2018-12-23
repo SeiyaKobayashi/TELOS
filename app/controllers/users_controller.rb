@@ -20,11 +20,18 @@ class UsersController < ApplicationController
     end
   end
 
+  # def index_following
+  #   users = User.all.order(created_at: :desc)
+  #   @users_following = users.following
+  # end
+
   # Show all of your liked posts
   def index_mylist
     @user = User.find_by(id: params[:id])
     @posts_count = @user.posts.count
     @likes_count = @user.likes.count
+    @user_following_count = @user.following.count
+    @user_followed_count = @user.followed.count
     likes = @user.likes
     @user_likes = @user.likes.to_json
     @user_liked_posts = Array.new
