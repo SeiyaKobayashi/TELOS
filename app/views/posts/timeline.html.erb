@@ -4,10 +4,10 @@
       <button><%= link_to("All", "/posts/index") %></button>
       <button><%= link_to("Timeline", "/posts/index/#{@current_user.id}") %></button>
     </div>
-    <% if @posts.empty? %>
-      <div class="no-posts">Oops, you haven't posted anything yet.</div>
+    <% if @posts_timeline.empty? %>
+      <div class="no-posts">Oops, you haven't followed anyone yet.</div>
     <% else %>
-      <% @posts.each do |post|%>
+      <% @posts_timeline.each do |post|%>
         <div class="posts-index-item">
           <div class="post-left">
             <img src="<%= "/user_images/#{post.user.image_name}" %>">

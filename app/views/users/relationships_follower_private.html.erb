@@ -1,5 +1,8 @@
 <div class="main users-index">
   <div class="container-users-index">
+    <% if @my_users.length == 0 %>
+      <div class="no-follower">Oops, you're not followed by anyone.<div>
+    <% end %>
     <% @my_users.each do |user|%>
       <div class="users-index-item">
         <div class="user-left">

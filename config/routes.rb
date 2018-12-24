@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get 'about' => 'home#about'
 
   get 'posts/index' => 'posts#index'
+  get 'posts/index/:id' => 'posts#timeline'
   get 'posts/new' => 'posts#new'
   post 'posts/create' => 'posts#create'
   get 'posts/:id' => 'posts#show'
@@ -30,6 +31,7 @@ Rails.application.routes.draw do
   get 'users/:id/relationships/follower/private' => 'users#relationships_follower_private'
 
   get 'tags/index' => 'tags#index'
+  get 'tags/index/:id' => 'tags#following_index'
   get 'tags/:id' => 'tags#show'
 
   get 'likes/create'

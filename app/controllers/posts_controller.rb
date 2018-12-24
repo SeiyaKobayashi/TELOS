@@ -24,6 +24,33 @@ class PostsController < ApplicationController
     end
   end
 
+  # Show all posts (and posts they've liked) of your following users
+  def timeline
+    # Get users you are following
+    _users_following = @current_user.following
+    users_following = Array.new
+    _users_following.each do |r|
+      users_following.push(User.find_by(id: r.followed_id))
+    end
+
+    # Get posts of the users you are following
+    posts_following = Array.new
+    users_following.each do |user|
+      posts_following.push(Post.where(user_id: user.id))
+    end
+
+    # Single loop gives an error (don't know why)
+    @posts_timeline = Array.new
+    posts_following.each do |post|
+      post.each do |p|
+        @posts_timeline.push(p)
+      end
+    end
+
+    @posts_timeline = @posts_timeline.sort_by{|p| p.updated_at}
+    @posts_timeline = @posts_timeline.reverse
+  end
+
   # Search posts
   def search(posts)
     keyword = params[:key]

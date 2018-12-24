@@ -35,6 +35,10 @@ class TagsController < ApplicationController
     end
   end
 
+  # def following_index
+  #
+  # end
+
   # Search tags
   def search(tags)
     keyword = params[:key]
