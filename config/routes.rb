@@ -31,7 +31,7 @@ Rails.application.routes.draw do
   get 'users/:id/relationships/follower/private' => 'users#relationships_follower_private'
 
   get 'tags/index' => 'tags#index'
-  get 'tags/index/:id' => 'tags#following_index'
+  # get 'tags/index/:id' => 'tags#following_index'
   get 'tags/:id' => 'tags#show'
 
   get 'likes/create'

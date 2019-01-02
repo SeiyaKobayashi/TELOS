@@ -10,18 +10,18 @@
             </div>
           <% end %>
           <p>Username<font color="red">*</font></p>
-          <input name = "name" value= <%= @user.name %>>
+          <input name="name" value=<%= @user.name %>>
           <p>Profile Photo</p>
           <input name="image" type="file">
           <p>Email Address<font color="red">*</font></p>
-          <input name = "email" value= <%= @user.email %>>
+          <input name="email" value= <%= @user.email %>>
           <p>Password<font color="red">*</font></p>
-          <input name = "password" value= <%= @user.password %>>
+          <input name="password" type="password">
           <p>Short Bio</p>
-          <textarea name = "bio"><%= @user.short_bio %></textarea>
+          <textarea name="bio"><%= @user.short_bio %></textarea>
           <p><font color="red">* fields are required.</font></p>
           <div class="user-btn">
-            <input type = "submit" value = "Save">
+            <input type="submit" value="Save">
           </div>
         <% end %>
         <div class="delete-account">

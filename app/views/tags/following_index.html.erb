@@ -1,9 +1,5 @@
 <div class="main tags-index">
   <div class="container-tags-index">
-    <div class="tags-buttons">
-      <button><%= link_to("All", "/tags/index") %></button>
-      <button><%= link_to("Following Tags", "/tags/index/#{@current_user.id}") %></button>
-    </div>
     <!-- Show all tags in descending order -->
     <% if @tags_distinct.empty? %>
       <div></div>

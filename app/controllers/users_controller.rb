@@ -52,32 +52,6 @@ class UsersController < ApplicationController
     return users
   end
 
-  # Create a new user
-  def new
-    @user = User.new
-  end
-
-  # This is called from "new.html.erb"
-  def create
-    @user = User.new(
-      name: params[:name],
-      email: params[:email],
-      password: params[:password],
-      image_name: "default_user.png"
-    )
-    if @user.save
-      # Browser keeps track of session id
-      session[:user_id] = @user.id
-      flash[:notice] = "Signed up successfully."
-      redirect_to("/users/#{@user.id}")
-    else
-      flash[:notice] = "All fields are required."
-      @name = params[:name]
-      @email = params[:email]
-      redirect_to("/signup")
-    end
-  end
-
   # Show user's details (profile image, email ...)
   def show
     @user = User.find_by(id: params[:id])
@@ -124,12 +98,64 @@ class UsersController < ApplicationController
     end
   end
 
-  # This is called from "show.html.erb"
+  ### Create a new user ###
+  def new
+    @user = User.new
+  end
+
+  def create
+    @user = User.new(
+      name: params[:name],
+      email: params[:email],
+      password: params[:password],
+      image_name: "default_user.png"
+    )
+    if @user.save
+      # Browser keeps track of session id
+      session[:user_id] = @user.id
+      flash[:notice] = "Signed up successfully."
+      redirect_to("/users/#{@user.id}")
+    else
+      flash[:notice] = "All fields are required."
+      @name = params[:name]
+      @email = params[:email]
+      redirect_to("/signup")
+    end
+  end
+
+  ### Login ###
+  def login_form
+  end
+
+  def login
+    password = params[:password]
+    password = password.bytes.map {|v| v.to_s(16)}.join
+    @user = User.find_by(email: params[:email], password: password)
+    if @user
+      # Browser keeps track of session id
+      session[:user_id] = @user.id
+      flash[:notice] = "Logged in successfully."
+      redirect_to("/posts/index")
+    else
+      @error_message = "Invalid email address / password."
+      @email = params[:email]
+      @password = params[:password]
+      render("users/login_form")
+    end
+  end
+
+  ### Logout ###
+  def logout
+    session[:user_id] = nil
+    flash[:notice] = "Logged out."
+    redirect_to("/login")
+  end
+
+  ### Update account information ###
   def edit
     @user = User.find_by(id: params[:id])
   end
 
-  # This is called from "edit.html.erb"
   def update
     @user = User.find_by(id: params[:id])
     @user.name = params[:name]
@@ -149,33 +175,6 @@ class UsersController < ApplicationController
     else
       render("users/edit")
     end
-  end
-
-  # Show login_form
-  def login_form
-  end
-
-  # This is calld from "login_form.html.erb"
-  def login
-    @user = User.find_by(email: params[:email], password: params[:password])
-    if @user
-      # Browser keeps track of session id
-      session[:user_id] = @user.id
-      flash[:notice] = "Logged in successfully."
-      redirect_to("/posts/index")
-    else
-      @error_message = "Invalid email address / password."
-      @email = params[:email]
-      @password = params[:password]
-      render("users/login_form")
-    end
-  end
-
-  # This is called from "application.html.erb"
-  def logout
-    session[:user_id] = nil
-    flash[:notice] = "Logged out."
-    redirect_to("/login")
   end
 
   # This is called from "users/edit.html.erb"

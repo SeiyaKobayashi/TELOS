@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_19_001818) do
+ActiveRecord::Schema.define(version: 2019_01_02_054351) do
 
   create_table "group_ids", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "tag_group_id"
@@ -65,6 +65,7 @@ ActiveRecord::Schema.define(version: 2018_12_19_001818) do
     t.datetime "updated_at", null: false
     t.string "image_name"
     t.text "short_bio"
+    t.string "password_confirmation"
   end
 
 end

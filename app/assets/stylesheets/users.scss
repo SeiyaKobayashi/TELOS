@@ -69,6 +69,16 @@
   font-size: 11px;
 }
 
+.user-if-follows {
+  display:inline-block;
+  width: 110px;
+  color: #bcbcbc;
+}
+
+.user-if-follows p {
+  font-size: 8px;
+}
+
 .user-follow-button {
   margin: 10px 0 0 0;
 }
@@ -338,7 +348,7 @@
 
 .form-body-signup {
     position: absolute;
-    top: 45%;
+    top: 48%;
     left: 50%;
     transform: translate(-50%,-50%);
     -ms-transform: translate(-50%,-50%);
