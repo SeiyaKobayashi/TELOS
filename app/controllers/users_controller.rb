@@ -108,6 +108,7 @@ class UsersController < ApplicationController
       name: params[:name],
       email: params[:email],
       password: params[:password],
+      password_confirmation: params[:password_confirmation],
       image_name: "default_user.png"
     )
     if @user.save
@@ -116,7 +117,7 @@ class UsersController < ApplicationController
       flash[:notice] = "Signed up successfully."
       redirect_to("/users/#{@user.id}")
     else
-      flash[:notice] = "All fields are required."
+      flash[:notice] = "Invalid fields. Please read signup instructions carefully."
       @name = params[:name]
       @email = params[:email]
       redirect_to("/signup")
@@ -161,6 +162,7 @@ class UsersController < ApplicationController
     @user.name = params[:name]
     @user.email = params[:email]
     @user.password = params[:password]
+    @user.password_confirmation = params[:password_confirmation]
     @user.short_bio = params[:bio]
 
     if params[:image]
@@ -199,8 +201,8 @@ class UsersController < ApplicationController
     end
 
     user.destroy
-    flash[:notice] = "Your account has been deleted. Thanks for using TELOS."
-    redirect_to("/login")
+    flash[:notice] = "Your account has been deleted. Thank you for using TELOS."
+    redirect_to("/signup")
   end
 
   def delete_tags(tag)

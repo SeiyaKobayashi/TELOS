@@ -14,9 +14,11 @@
           <p>Profile Photo</p>
           <input name="image" type="file">
           <p>Email Address<font color="red">*</font></p>
-          <input name="email" value= <%= @user.email %>>
+          <input name="email" value=<%= @user.email %>>
           <p>Password<font color="red">*</font></p>
           <input name="password" type="password">
+          <p>Password (Confirm)<font color="red">*</font></p>
+          <input name="password_confirmation" type="password">
           <p>Short Bio</p>
           <textarea name="bio"><%= @user.short_bio %></textarea>
           <p><font color="red">* fields are required.</font></p>

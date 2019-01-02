@@ -348,7 +348,7 @@
 
 .form-body-signup {
     position: absolute;
-    top: 48%;
+    top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
     -ms-transform: translate(-50%,-50%);
@@ -377,7 +377,7 @@
   opacity: 0.6;
   font-size: 16px;
   letter-spacing: 2px;
-  border-radius: 2px;
+  border-radius: 3px;
 }
 
 .form-body-login input {
@@ -393,13 +393,19 @@
 }
 
 .form-body p {
-    font-weight: 300;
+    font-weight: 500;
 }
 
 .form-body-signup p {
-    font-weight: 300;
+    font-weight: 500;
+}
+
+.signup-instructions {
+  font-style: italic;
+  font-size: 12px;
+  opacity: 0.9;
 }
 
 .form-body-login p {
-    font-weight: 300;
+    font-weight: 500;
 }

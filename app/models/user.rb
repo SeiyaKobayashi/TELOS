@@ -1,19 +1,20 @@
 class User < ApplicationRecord
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-  VALID_PASSWORD = /\A(?=.*?[a-z])(?=.*?[A-Z])(?=.*?\d)[a-zA-Z\d]{4,100}+\z/
+  VALID_PASSWORD = /\A(?=.*?[a-z])(?=.*?[A-Z])(?=.*?\d)[a-zA-Z\d]{8,30}+\z/
 
   # Validations
-  validates:name, {presence: true}
-  validates:email, {presence: true, uniqueness: true, format: {with: VALID_EMAIL_REGEX}}
-  validates:password, {presence: true, format: {with: VALID_PASSWORD}, if: :confirm_pwd?}
+  validates :name, {presence: true}
+  validates :email, {presence: true,
+                     uniqueness: true,
+                     format: {with: VALID_EMAIL_REGEX, message: "Invalid."}}
+  validates :password, {presence: true,
+                        format: {with: VALID_PASSWORD, message: "Invalid."},
+                        confirmation: true}
+  validates :password_confirmation, {presence: true}
+
   before_save :change_password
-
   has_many :likes, dependent: :destroy
-
-  def confirm_pwd?
-    self.password == self.password_confirmation
-  end
 
   ### Encrypt password before saving to DB (password_confirmation is NOT saved to DB) ###
   def change_password
