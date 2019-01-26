@@ -17,23 +17,27 @@
           </div>
           <div class="post-right">
             <%= link_to(simple_format(post.content), "/posts/#{post.id}") %>
-            <div class="post-likes">
-              <% if Like.find_by(user_id: @current_user.id, post_id: post.id) != nil %>
-                <i class="fas fa-thumbs-up liked"></i>
-                <% likes = Like.where(post_id: post.id) %>
-                <% num_of_likes = likes.length %>
-                <% if num_of_likes != 0 %>
+          </div>
+          <div class="post-likes">
+            <% if Like.find_by(user_id: @current_user.id, post_id: post.id) != nil %>
+              <i class="fas fa-thumbs-up liked"></i>
+              <% likes = Like.where(post_id: post.id) %>
+              <% num_of_likes = likes.length %>
+              <% if num_of_likes != 0 %>
+                <div class="num-of-likes-liked">
                   <%= num_of_likes %>
-                <% end %>
-              <% else %>
-                <i class="fas fa-thumbs-up not-liked"></i>
-                <% likes = Like.where(post_id: post.id) %>
-                <% num_of_likes = likes.length %>
-                <% if num_of_likes != 0 %>
-                  <%= num_of_likes %>
-                <% end %>
+                </div>
               <% end %>
-            </div>
+            <% else %>
+              <i class="fas fa-thumbs-up not-liked"></i>
+              <% likes = Like.where(post_id: post.id) %>
+              <% num_of_likes = likes.length %>
+              <% if num_of_likes != 0 %>
+                <div class="num-of-likes-not-liked">
+                  <%= num_of_likes %>
+                </div>
+              <% end %>
+            <% end %>
           </div>
         </div>
       <% end %>

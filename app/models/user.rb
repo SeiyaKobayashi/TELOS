@@ -1,9 +1,9 @@
 class User < ApplicationRecord
 
+  ### Validations ###
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-  VALID_PASSWORD = /\A(?=.*?[a-z])(?=.*?[A-Z])(?=.*?\d)[a-zA-Z\d]{8,30}+\z/
+  VALID_PASSWORD = /\A(?=.*?[a-z])(?=.*?[A-Z])(?=.*?\d)[a-zA-Z\d\-_]{8,30}+\z/
 
-  # Validations
   validates :name, {presence: true}
   validates :email, {presence: true,
                      uniqueness: true,
@@ -13,16 +13,20 @@ class User < ApplicationRecord
                         confirmation: true}
   validates :password_confirmation, {presence: true}
 
-  before_save :change_password
+  ### Dependency ###
   has_many :likes, dependent: :destroy
 
-  ### Encrypt password before saving to DB (password_confirmation is NOT saved to DB) ###
-  def change_password
-    self.password = simple_encryption(self.password)
+  ### Encryption ###
+  attr_encrypted :email, key: 'This is a key that is 256 bits!!'
+  attr_encrypted :password, key: 'This is a key that is 256 bits!!'
+
+  before_save do
+    self.search_key = generate_hash(self.email, self.password)
   end
 
-  def simple_encryption(password)
-    password.bytes.map {|v| v.to_s(16)}.join
+  # Use this hash value for searching purpose (e.g. login)
+  def generate_hash(*args)
+    Digest::SHA3.hexdigest(args.join(''))
   end
 
   # Array of posts given user_id

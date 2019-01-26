@@ -1,0 +1,29 @@
+current directory: /Users/SeiyaKobayashi/Desktop/Dev/Projects/TELOS/vendor/bundle/gems/digest-sha3-1.1.0/ext/digest
+/Users/SeiyaKobayashi/.rbenv/versions/2.4.2/bin/ruby -r ./siteconf20190126-42578-1x161zd.rb extconf.rb
+checking for ruby/digest.h... yes
+checking for rb_str_set_len()... yes
+creating Makefile
+
+current directory: /Users/SeiyaKobayashi/Desktop/Dev/Projects/TELOS/vendor/bundle/gems/digest-sha3-1.1.0/ext/digest
+make "DESTDIR=" clean
+
+current directory: /Users/SeiyaKobayashi/Desktop/Dev/Projects/TELOS/vendor/bundle/gems/digest-sha3-1.1.0/ext/digest
+make "DESTDIR="
+compiling KeccakF-1600-reference.c
+compiling KeccakNISTInterface.c
+compiling KeccakSponge.c
+compiling displayIntermediateValues.c
+displayIntermediateValues.c:113:40: warning: format string is not a string literal (potentially insecure) [-Wformat-security]
+        fprintf(intermediateValueFile, text);
+                                       ^~~~
+displayIntermediateValues.c:113:40: note: treat the string as an argument to avoid this
+        fprintf(intermediateValueFile, text);
+                                       ^
+                                       "%s", 
+1 warning generated.
+compiling sha3.c
+linking shared-object digest/sha3.bundle
+
+current directory: /Users/SeiyaKobayashi/Desktop/Dev/Projects/TELOS/vendor/bundle/gems/digest-sha3-1.1.0/ext/digest
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 sha3.bundle ./.gem.20190126-42578-1o2p5dn/digest

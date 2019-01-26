@@ -133,6 +133,7 @@ class TagsController < ApplicationController
             tag_new.group_id = group_id.id
           end
           tag_new.save
+          changed = 0
         end
       end
       flash[:notice] = "Update has been saved."

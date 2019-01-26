@@ -54,6 +54,7 @@
 }
 
 .tags-show-item {
+  position: relative;
   width: 100%;
   height: auto;
   padding: 10px 0;
@@ -91,18 +92,29 @@
   display: block;
   float: left;
   width: 80%;
-  padding: 10px 30px 10px 0;
+  padding: 10px 30px 25px 0;
   word-wrap: break-word;
 }
 
 .post-likes-tag {
+  position: absolute;
+  left: 10.65em;
+  bottom: 0.55em;
   margin-top: 8px;
   font-size: 15px;
   color: grey;
 }
 
 .post-likes-tag .liked {
+  display: inline-block;
+  float: left;
   color: #FA3A3A;
+}
+
+.post-likes-tag .not-liked {
+  display: inline-block;
+  float: left;
+  margin-bottom: 0.4em;
 }
 
 /* tags/new */

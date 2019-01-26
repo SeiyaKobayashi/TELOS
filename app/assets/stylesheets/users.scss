@@ -191,8 +191,9 @@
 }
 
 .container-user .posts-index-item-user {
+  position: relative;
   width: 100%;
-  height: auto;
+  height: 100%;
   padding: 10px 25px;
   background-color: white;
   overflow: hidden;
@@ -201,7 +202,7 @@
 
 .post-left-user {
   float: left;
-  width: 10%;
+  width: 12%;
   word-wrap: break-word;
 }
 
@@ -215,20 +216,31 @@
 
 .post-right-user {
   float: left;
-  width: 90%;
+  width: 88%;
   padding: 10px 10px 0 30px;
   text-align: left;
   word-wrap: break-word;
 }
 
 .post-likes-user {
+  position: absolute;
+  left: 10.55em;
+  bottom: 0.5em;
   margin-top: 8px;
   font-size: 14px;
   color: grey;
 }
 
 .post-likes-user .liked {
+  display: inline-block;
+  float: left;
   color: #FA3A3A;
+}
+
+.post-likes-user .not-liked {
+  display: inline-block;
+  float: left;
+  margin-bottom: 0.5em;
 }
 
 .user span {

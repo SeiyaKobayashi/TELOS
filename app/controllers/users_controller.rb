@@ -117,7 +117,7 @@ class UsersController < ApplicationController
       flash[:notice] = "Signed up successfully."
       redirect_to("/users/#{@user.id}")
     else
-      flash[:notice] = "Invalid fields. Please read signup instructions carefully."
+      flash[:notice] = "Invalid fields. Please read signup instructions carefully and try again."
       @name = params[:name]
       @email = params[:email]
       redirect_to("/signup")
@@ -129,20 +129,26 @@ class UsersController < ApplicationController
   end
 
   def login
+    email = params[:email]
     password = params[:password]
-    password = password.bytes.map {|v| v.to_s(16)}.join
-    @user = User.find_by(email: params[:email], password: password)
+    search_key = generate_hash(email, password)
+    @user = User.find_by(search_key: search_key)
     if @user
       # Browser keeps track of session id
       session[:user_id] = @user.id
       flash[:notice] = "Logged in successfully."
       redirect_to("/posts/index")
     else
-      @error_message = "Invalid email address / password."
+      @error_message = "Invalid email address or password."
       @email = params[:email]
       @password = params[:password]
       render("users/login_form")
     end
+  end
+
+  # Use this hash value for searching purpose (e.g. login)
+  def generate_hash(*args)
+    Digest::SHA3.hexdigest(args.join(''))
   end
 
   ### Logout ###

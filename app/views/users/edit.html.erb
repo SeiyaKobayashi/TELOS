@@ -16,6 +16,10 @@
           <p>Email Address<font color="red">*</font></p>
           <input name="email" value=<%= @user.email %>>
           <p>Password<font color="red">*</font></p>
+          <p class="signup-instructions">
+            8-30 characters, at least one lowercase,
+            one uppercase, and one digit. Can contain '-' and '_'.
+          </p>
           <input name="password" type="password">
           <p>Password (Confirm)<font color="red">*</font></p>
           <input name="password_confirmation" type="password">

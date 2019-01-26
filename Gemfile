@@ -40,6 +40,8 @@ gem 'loofah', '>= 2.2.3'
 gem 'd3_rails', '~> 4.1', '>= 4.1.1'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
+gem 'attr_encrypted', '~> 3.0.0'
+gem 'digest-sha3', '~> 1.1'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
