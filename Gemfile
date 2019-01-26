@@ -10,7 +10,6 @@ gem 'rails'
 gem 'activemodel', '~> 5.2', '>= 5.2.2'
 gem 'activesupport', '~> 5.2', '>= 5.2.2'
 gem 'railties', '~> 5.2', '>= 5.2.2'
-gem 'sqlite3'
 # User MySQL as the database
 gem 'mysql2'
 # Use Puma as the app server
