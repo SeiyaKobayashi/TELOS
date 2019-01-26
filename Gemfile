@@ -10,6 +10,7 @@ gem 'rails'
 gem 'activemodel', '~> 5.2', '>= 5.2.2'
 gem 'activesupport', '~> 5.2', '>= 5.2.2'
 gem 'railties', '~> 5.2', '>= 5.2.2'
+gem 'sqlite3'
 # User MySQL as the database
 gem 'mysql2'
 # Use Puma as the app server
@@ -44,6 +45,7 @@ gem 'jquery-ui-rails'
 gem 'attr_encrypted', '~> 3.0.0'
 gem 'digest-sha3', '~> 1.1'
 gem 'bxslider-rails'
+gem 'webpacker'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
