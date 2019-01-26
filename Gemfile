@@ -44,7 +44,7 @@ gem 'jquery-ui-rails'
 gem 'attr_encrypted', '~> 3.0.0'
 gem 'digest-sha3', '~> 1.1'
 gem 'bxslider-rails'
-gem 'webpacker'
+# gem 'webpacker'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
