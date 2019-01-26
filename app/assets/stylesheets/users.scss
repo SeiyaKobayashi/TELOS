@@ -334,7 +334,7 @@
 /* users/signup, login */
 
 .users-new {
-    position: relative;
+  position: fixed;
 }
 
 .users-new img {
@@ -350,7 +350,6 @@
   transform: translate(-50%,-50%);
   -ms-transform: translate(-50%,-50%);
   -webkit-transform: translate(-50%,-50%);
-  margin:0;
   padding:0;
   font-weight: 300;
   margin: 60px 0 20px;

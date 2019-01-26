@@ -23,4 +23,6 @@ test:
 
 production:
   <<: *default
-  database: db/production.sqlite3
+  database: heroku_0b62d3fcf788a85
+  username: ba538cd3a17063
+  password: Seiya_1225
