@@ -56,7 +56,9 @@
             </div>
             <div class="post-likes-user">
               <% if Like.find_by(user_id: @current_user.id, post_id: post.id) != nil %>
-                <i class="fas fa-thumbs-up liked"></i>
+                <%= link_to likes_delete_path(:post_id => post.id, :user_id => params[:id]) do %>
+                  <i class="fas fa-thumbs-up liked"></i>
+                <% end %>
                 <% likes = Like.where(post_id: post.id) %>
                 <% num_of_likes = likes.length %>
                 <% if num_of_likes != 0 %>
@@ -65,7 +67,9 @@
                   </div>
                 <% end %>
               <% else %>
-                <i class="fas fa-thumbs-up not-liked"></i>
+                <%= link_to likes_create_path(:post_id => post.id, :user_id => params[:id]) do %>
+                  <i class="fas fa-thumbs-up not-liked"></i>
+                <% end %>
                 <% likes = Like.where(post_id: post.id) %>
                 <% num_of_likes = likes.length %>
                 <% if num_of_likes != 0 %>
