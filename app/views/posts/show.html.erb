@@ -24,7 +24,7 @@
               <%= num_of_likes %>
             <% end %>
           </div>
-          <%= link_to likes_delete_path(:id => params[:id]) do %>
+          <%= link_to likes_delete_path(:post_id => params[:id]) do %>
             <i class="fas fa-thumbs-up liked"></i>
           <% end %>
         <% else %>
@@ -35,7 +35,7 @@
               <%= num_of_likes %>
             <% end %>
           </div>
-          <%= link_to likes_create_path(:id => params[:id]) do %>
+          <%= link_to likes_create_path(:post_id => params[:id]) do %>
             <i class="fas fa-thumbs-up not-liked"></i>
           <% end %>
         <% end %>

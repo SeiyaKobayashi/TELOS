@@ -131,7 +131,8 @@
 
  .header-menus {
    float: right;
-   padding-right: 20px;
+   padding-right: 70px;
+   display: none;
  }
 
  .header-menus li {
@@ -168,6 +169,13 @@
  .header-menus li img:hover {
    opacity: 0.8;
    cursor: pointer;
+ }
+
+ .fa-bars {
+   position: absolute;
+   color: white;
+   font-size: 1.9em;
+   margin: 0.7em 0.8em 0 34.7em;
  }
 
  /* #menu {

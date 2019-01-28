@@ -1,10 +1,8 @@
 // Make sure JS works without reloading.
-document.addEventListener('turbolinks:load', function() {
-  removeGraph();
-  data = $('.user-profile').data("user-likes");
-  d = parseData(data);
-  drawGraph(d);
-});
+removeGraph();
+data = $('.user-profile').data("user-likes");
+d = parseData(data);
+drawGraph(d);
 
 // Remove SVG and graphs.
 function removeGraph() {

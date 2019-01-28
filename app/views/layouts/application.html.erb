@@ -20,59 +20,63 @@
       </div>
       <ul class="header-menus">
         <% if @current_user %>
-          <li>
+          <li class="logged-in">
             <a href="<%= "/users/#{@current_user.id}" %>">
               <img src="<%= "/user_images/#{@current_user.image_name}" %>">
             </a>
           </li>
           <% if request.original_fullpath.split('?').first == "/users/index" %>
-            <li>
+            <li class="logged-in">
               <%= form_tag("/users/index", method: :get) do %>
                 <input name = "key">
                 <input type = "submit" value = "Search">
               <% end %>
             </li>
           <% elsif request.original_fullpath.split('?').first == "/posts/index" %>
-            <li>
+            <li class="logged-in">
               <%= form_tag("/posts/index", method: :get) do %>
                 <input name = "key">
                 <input type = "submit" value = "Search">
               <% end %>
             </li>
           <% elsif request.original_fullpath.split('?').first == "/tags/index" %>
-            <li>
+            <li class="logged-in">
               <%= form_tag("/tags/index", method: :get) do %>
                 <input name = "key">
                 <input type = "submit" value = "Search">
               <% end %>
             </li>
           <% end %>
-          <li>
+          <li class="logged-in">
             <a href="/users/index"><i class="fa fa-users"></i></a>
           </li>
-          <li>
+          <li class="logged-in">
             <a href="/posts/index"><i class="fa fa-book"></i></a>
           </li>
-          <li>
+          <li class="logged-in">
             <a href="/tags/index"><i class="fa fa-tags"></i></a>
           </li>
-          <li>
+          <li class="logged-in">
             <a href="/posts/new"><i class="fa fa-edit"></i></a>
           </li>
-          <li><%= link_to("Logout", "/logout", {method: :post}) %></li>
+          <li class="logged-in"><%= link_to("Logout", "/logout", {method: :post}) %></li>
         <% else %>
-          <li>
+          <li class="not-logged-in">
             <%= link_to("Sign Up", "/signup") %>
           </li>
-          <li>
+          <li class="not-logged-in">
             <%= link_to("Login", "/login") %>
           </li>
         <% end %>
       </ul>
+      <i class="fa fa-bars" aria-hidden="true"></i>
+      <%= javascript_include_tag 'header_menu' %>
     </header>
     <% if flash[:notice] %>
-      <div class="flash">
-        <%= flash[:notice]%>
+      <div class="flash-box">
+        <div class="flash"><%= flash[:notice]%></div>
+        <div class="flash-close">×</div>
+        <%= javascript_include_tag 'close_flash' %>
       </div>
     <% end %>
     <%= yield %>
