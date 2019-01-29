@@ -7,6 +7,31 @@
         <div class="profile-update">
           <%= link_to("Update Profile", "/users/#{@user.id}/edit") %>
         </div>
+      <% else %>
+        <% if Relationship.find_by(follower_id: @current_user.id, followed_id: params[:id]) != nil %>
+          <!-- <div class="user-if-follows"><p>follows you</p></div> -->
+          <div class="user-follow-button">
+            <button>
+              <%= link_to "Following", {controller: 'relationships', action: 'delete', id: params[:id]},
+                                        method: :post, data: {confirm: "Unfollow this user?"} %>
+            </button>
+          </div>
+        <% elsif Relationship.find_by(follower_id: params[:id], followed_id: @current_user.id) != nil %>
+          <!-- <div class="user-if-follows"><p>follows you</p></div> -->
+          <div class="user-follow-button">
+            <button>
+              <%= link_to "Follow Back", {controller: 'relationships', action: 'create', id: params[:id]},
+                                          method: :post, data: {confirm: "Follow this user?"} %>
+            </button>
+          </div>
+        <% else %>
+          <div class="user-follow-button">
+            <button>
+              <%= link_to "Follow", {controller: 'relationships', action: 'create', id: params[:id]},
+                                     method: :post, data: {confirm: "Follow this user?"} %>
+            </button>
+          </div>
+        <% end %>
       <% end %>
       <p><%= simple_format(@user.short_bio) %></p>
       <p class="user-stats">

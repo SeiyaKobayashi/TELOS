@@ -18,7 +18,7 @@
           <div class="post-right">
             <%= link_to(simple_format(post.content), "/posts/#{post.id}") %>
           </div>
-          <div class="post-likes">
+          <div class="post-likes" data-post="<%= post %>">
             <% if Like.find_by(user_id: @current_user.id, post_id: post.id) != nil %>
               <%= link_to likes_delete_path(:post_id => post.id) do %>
                 <i class="fas fa-thumbs-up liked"></i>

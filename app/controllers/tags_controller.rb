@@ -104,7 +104,8 @@ class TagsController < ApplicationController
     temp_after = params[:tags]
     tags_after = Array.new
     if temp_after != nil
-      temp_after = temp_after.split(", ")
+      temp_after = temp_after.delete(" ")
+      temp_after = temp_after.split(",")
       temp_after.each do |temp|
         tags_after.push(temp)
       end
@@ -115,13 +116,18 @@ class TagsController < ApplicationController
     diff = diff.uniq
     if diff.length != 0
       diff.each do |d|
+        # Note: 'find_by' method is case INSENSITIVE!! (might cause bugs in some cases)
         if tags_before.include?(d) == true
-          tag = Tag.find_by(label: d, post_id: post.id)
-          tag.destroy
+          temp_before.each do |tag_b|
+            if d == tag_b.label
+              tag_b.destroy
+              break
+            end
+          end
         else
           tag_new = Tag.new(label: d, post_id: post.id)
           tags_all.each do |tag_n|
-            if tag_new.label.downcase == tag_n.label.downcase
+            if tag_new.label == tag_n.label
               tag_new.group_id = tag_n.group_id
               changed = 1
               break
