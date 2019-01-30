@@ -189,29 +189,32 @@ class UsersController < ApplicationController
   def delete
     user = User.find_by(id: params[:id])
     for post in user.posts do
-      post_gid = GroupId.find_by(post_id: post.id)
-      if post_gid == nil
-        post.destroy
-      else
-        tags = Tag.where(post_id: post.id)
-        if tags.length == 1
-          delete_tags(tags[0])
-        else
-          tags.each do |tag|
-            delete_tags(tag)
-          end
-        end
-        # After unlinking tags from post, simply destroy the post
-        post.destroy
-      end
+      delete_post(post)
     end
-
     user.destroy
-    flash[:notice] = "Your account has been deleted. Thank you for using TELOS."
+    flash[:notice] = "Your account has now been deleted. Thank you for using TELOS."
     redirect_to("/signup")
   end
 
-  def delete_tags(tag)
+  def delete_post(post)
+    post_gid = GroupId.find_by(post_id: post.id)
+    if post_gid == nil
+      post.destroy
+    else
+      tags = Tag.where(post_id: post.id)
+      if tags.length == 1
+        delete_tag(tags[0], post)
+      else
+        tags.each do |tag|
+          delete_tag(tag, post)
+        end
+      end
+      # After unlinking tags from post, simply destroy the post
+      post.destroy
+    end
+  end
+
+  def delete_tag(tag, post)
     tag_gid = tag.group_id
     tags_with_that_gid = Tag.where(group_id: tag_gid)
     # If that tag is attached only to that post

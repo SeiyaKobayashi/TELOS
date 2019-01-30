@@ -90,19 +90,19 @@
  /* Header */
 
  header {
-   height: 70px;
+   width: 100%;
+   height: 9vh;
    position: fixed;
    z-index: 3;
-   width: 100%;
    background-color: #282826;
  }
 
  .header-title * {
    float: left;
    color: white;
-   font-size: 25px;
-   line-height: 70px;
-   padding-left: 20px;
+   font-size: 1.9vw;
+   line-height: 9.5vh;
+   padding-left: 2vw;
  }
 
  .header-title:hover {
@@ -112,17 +112,17 @@
  .header-partition {
    float: left;
    color: white;
-   font-size: 15px;
-   line-height: 70px;
-   padding-left:10px;
+   font-size: 1.4vw;
+   line-height: 9.3vh;
+   padding-left: 0.8vw;
  }
 
  .header-about * {
    float: left;
    color: white;
-   font-size: 15px;
-   line-height: 70px;
-   padding-left:10px;
+   font-size: 1.1vw;
+   line-height: 9.8vh;
+   padding-left: 0.8vw;
  }
 
  .header-about:hover {
@@ -131,20 +131,23 @@
 
  .header-menus {
    float: right;
-   padding-right: 70px;
-   display: none;
+   padding-right: 4vh;
  }
 
  .header-menus li {
    float: left;
-   line-height: 70px;
-   padding-left: 20px;
+   line-height: 9vh;
+   padding-left: 1.6vw;
+ }
+
+ .logged-in, .not-logged-in {
+   display: none;
  }
 
  .header-menus a {
    float: left;
    color: white;
-   font-size: 15px;
+   font-size: 2.2vh;
  }
 
  .header-menus a:hover {
@@ -154,28 +157,20 @@
  .header-menus .fa {
    float: left;
    color: white;
-   font-size: 25px;
-   line-height: 70px;
+   font-size: 3.8vh;
+   line-height: 9vh;
  }
 
  .header-menus img {
-   width: 35px;
-   height: 35px;
+   width: 2.7vw;
+   height: 2.7vw;
    border-radius: 50%;
-   margin: 17px 0 0;
+   margin: 2.1vh 0 0;
    object-fit: cover;
  }
 
  .header-menus li img:hover {
    opacity: 0.8;
-   cursor: pointer;
- }
-
- .fa-bars {
-   position: absolute;
-   color: white;
-   font-size: 1.9em;
-   margin: 0.7em 0.8em 0 34.7em;
  }
 
  li input {

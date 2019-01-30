@@ -60,6 +60,7 @@
             <a href="/posts/new"><i class="fa fa-edit"></i></a>
           </li>
           <li class="logged-in"><%= link_to("Logout", "/logout", {method: :post}) %></li>
+          <li><i class="fa fa-bars" aria-hidden="true"></i></li>
         <% else %>
           <li class="not-logged-in">
             <%= link_to("Sign Up", "/signup") %>
@@ -67,9 +68,9 @@
           <li class="not-logged-in">
             <%= link_to("Login", "/login") %>
           </li>
+          <li><i class="fa fa-bars" aria-hidden="true"></i></li>
         <% end %>
       </ul>
-      <i class="fa fa-bars" aria-hidden="true"></i>
       <%= javascript_include_tag 'header_menu' %>
     </header>
     <% if flash[:notice] %>

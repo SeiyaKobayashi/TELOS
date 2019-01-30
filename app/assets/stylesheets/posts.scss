@@ -286,6 +286,16 @@
   margin: 8px 0px 0px 0px;
 }
 
+.form-inputs p a {
+  font-size: 12px;
+  text-decoration: underline;
+  color: #a3a3a3;
+}
+
+.form-inputs p a:hover {
+  color: #c6c6c6;
+}
+
 ::placeholder {
   color: #BBBBBB;
 }

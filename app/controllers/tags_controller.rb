@@ -105,6 +105,7 @@ class TagsController < ApplicationController
     tags_after = Array.new
     if temp_after != nil
       temp_after = temp_after.delete(" ")
+      temp_after = temp_after.delete("\r\n")
       temp_after = temp_after.split(",")
       temp_after.each do |temp|
         tags_after.push(temp)
@@ -120,15 +121,24 @@ class TagsController < ApplicationController
         if tags_before.include?(d) == true
           temp_before.each do |tag_b|
             if d == tag_b.label
+              gid = GroupId.find_by(tag_id: tag_b.id)
+              gid.destroy
               tag_b.destroy
               break
             end
           end
         else
           tag_new = Tag.new(label: d, post_id: post.id)
-          tags_all.each do |tag_n|
+          tag_new.save
+          # Notice here that tags_all[0] is the tag just created
+          tags_all.slice(1..-1).each do |tag_n|
             if tag_new.label == tag_n.label
+              group_id = GroupId.new(post_id: post.id, tag_id: tag_new.id)
+              group_id.save
+              group_id.tag_group_id = tag_n.group_id
+              group_id.save
               tag_new.group_id = tag_n.group_id
+              tag_new.save
               changed = 1
               break
             end
@@ -136,13 +146,15 @@ class TagsController < ApplicationController
           if changed == 0
             group_id = GroupId.new(post_id: post.id, tag_id: tag_new.id)
             group_id.save
+            group_id.tag_group_id = group_id.id
+            group_id.save
             tag_new.group_id = group_id.id
+            tag_new.save
           end
-          tag_new.save
           changed = 0
         end
       end
-      flash[:notice] = "Update has been saved."
+      flash[:notice] = "Updates have been saved."
       redirect_to("/posts/#{post.id}")
       return
     else

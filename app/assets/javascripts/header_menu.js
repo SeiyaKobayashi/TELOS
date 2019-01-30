@@ -1,7 +1,7 @@
 $('.fa-bars').click(function() {
-  if ($(this).prev().css('display') == 'none') {
-    $(this).prev().slideDown();
+  if ($(this).parent().siblings().css('display') == 'none') {
+    $(this).parent().siblings().slideDown();
   } else {
-    $(this).prev().slideUp();
+    $(this).parent().siblings().slideUp();
   }
 });
