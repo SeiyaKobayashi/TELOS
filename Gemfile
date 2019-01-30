@@ -12,6 +12,7 @@ gem 'activesupport', '~> 5.2', '>= 5.2.2'
 gem 'railties', '~> 5.2', '>= 5.2.2'
 # User MySQL as the database
 gem 'mysql2'
+gem 'sqlite3'
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
 # Use SCSS for stylesheets

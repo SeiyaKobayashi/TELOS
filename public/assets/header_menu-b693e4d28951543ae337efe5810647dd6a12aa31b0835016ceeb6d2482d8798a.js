@@ -1,0 +1,1 @@
+$(".fa-bars").click(function(){"none"==$(this).parent().siblings().css("display")?$(this).parent().siblings().slideDown():$(this).parent().siblings().slideUp()});
