@@ -27,6 +27,7 @@ It's not easy to keep track of your daily progress manually (how many words did 
 - Create the iOS version and ship it to the App Store
 
 ## Run TELOS on localhost
+Clone this repository. Within the directory, run the following command.
 ```
 $ rails server
 ```
