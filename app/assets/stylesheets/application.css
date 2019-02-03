@@ -1,184 +1,191 @@
 /*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
- * vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
  *= require_self
  *= require_tree .
  */
 
- /* SetUp */
+/*** Setups ***/
 
- * {
-   box-sizing: border-box;
- }
+* {
+  box-sizing: border-box;
+}
 
- html {
-   font: 100% / 1.5 'Avenir Next', 'Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro W3', sans-serif;
-   letter-spacing: 1px;
- }
+html {
+  font: 100% / 1.5 'Avenir Next', 'Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro W3', sans-serif;
+  letter-spacing: 1px;
+}
 
- ul, li {
-   list-style-type: none;
-   padding: 0;
-   margin: 0;
- }
+ul, li {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
 
- a {
-   text-decoration: none;
-   color: #2a2e30;
-   font-size: 14px;
- }
+a {
+  text-decoration: none;
+  color: #2a2e30;
+}
 
- h1, h2, h3, h4, h5, h6, p {
-   margin: 0;
- }
+h1, h2, h3, h4, h5, h6, p {
+  margin: 0;
+}
 
- input {
-   background-color: transparent;
-   outline-width: 0;
- }
+input {
+  background-color: transparent;
+  outline-width: 0;
+}
 
- form input[type="submit"] {
-   border: double;
-   cursor: pointer;
- }
+form input[type="submit"] {
+  border: double;
+  cursor: pointer;
+}
 
- form input[type="submit"]:hover {
-   opacity: 0.8;
- }
+form input[type="submit"]:hover {
+  opacity: 0.8;
+}
 
- /* Common Layout */
+/*** Common Layout ***/
 
- body {
-   color: #2a2e30;
-   background-color: #fffef9;
-   margin: 0;
-   min-height: 1vh;
- }
-
- body #wrapper {
-  display: flex;
-  flex-direction: column;
+body {
+  color: #2a2e30;
+  background-color: #fffef9;
+  margin: 0;
   min-height: 100vh;
 }
 
- .main {
-   color: #2a2e30;
-   background-color: #fffef9;
-   position: absolute;
-   top: 70px;
-   width: 100%;
-   height: auto;
-   min-height: 100%;
- }
+body #wrapper {
+  display: flex;
+  flex-direction: column;
+}
 
- .container {
-   max-width: 700px;
-   margin: 80px auto;
-   padding: 0 15px;
-   clear: both;
- }
+.main {
+  color: #2a2e30;
+  background-color: #fffef9;
+  position: absolute;
+  top: 70px;
+  width: 100%;
+  height: auto;
+  min-height: 100vh;
+}
 
- /* Header */
+.container {
+  max-width: 700px;
+  margin: 80px auto;
+  padding: 0 15px;
+  clear: both;
+}
 
- header {
-   width: 100%;
-   height: 9vh;
-   position: fixed;
-   z-index: 3;
-   background-color: #282826;
- }
+/*** Header ***/
 
- .header-title * {
-   float: left;
-   color: white;
-   font-size: 1.9vw;
-   line-height: 9.5vh;
-   padding-left: 2vw;
- }
+header {
+  position: fixed;
+  width: 100vw;
+  height: 9vh;
+  z-index: 5;
+  background-color: #282826;
+}
 
- .header-title:hover {
-   opacity: 0.8;
- }
+.header-left * {
+  float: left;
+  color: white;
+}
 
- .header-partition {
-   float: left;
-   color: white;
-   font-size: 1.4vw;
-   line-height: 9.3vh;
-   padding-left: 0.8vw;
- }
+.header-title * {
+  font-size: calc(11px + 1.8vmin);
+  margin: 2.3vh 0 0 2vw;
+}
 
- .header-about * {
-   float: left;
-   color: white;
-   font-size: 1.1vw;
-   line-height: 9.8vh;
-   padding-left: 0.8vw;
- }
+.header-title:hover {
+  opacity: 0.8;
+}
 
- .header-about:hover {
-   opacity: 0.8;
- }
+.header-partition {
+  font-size: calc(6px + 1.5vmin);
+  margin: 2.9vh 0 0 0.7vw;
+}
 
- .header-menus {
-   float: right;
-   padding-right: 4vh;
- }
+.header-about * {
+  font-size: calc(9px + 0.8vmin);
+  margin: 3.3vh 0 0 0.8vw;
+}
 
- .header-menus li {
-   float: left;
-   line-height: 9vh;
-   padding-left: 1.6vw;
- }
+.header-about:hover {
+  opacity: 0.8;
+}
 
- .logged-in, .not-logged-in {
-   display: none;
- }
+.header-right {
+  float: right;
+  margin: 0.3vh 2.5vw 0 0;
+}
 
- .header-menus a {
-   float: left;
-   color: white;
-   font-size: 2.2vh;
- }
+.header-right li {
+  float: left;
+  line-height: 9vh;
+  padding-left: 1.2vw;
+}
 
- .header-menus a:hover {
-   opacity: 0.8;
- }
+.header-right a {
+  float: left;
+  color: white;
+  font-size: calc(9px + 1.1vmin);
+}
 
- .header-menus .fa {
-   float: left;
-   color: white;
-   font-size: 3.8vh;
-   line-height: 9vh;
- }
+.header-right a:hover {
+  opacity: 0.8;
+}
 
- .header-menus img {
-   width: 2.7vw;
-   height: 2.7vw;
-   border-radius: 50%;
-   margin: 2.1vh 0 0;
-   object-fit: cover;
- }
+.header-right .fa {
+  float: left;
+  color: white;
+  line-height: 9vh;
+  font-size: calc(10px + 2.2vmin);
+}
 
- .header-menus li img:hover {
-   opacity: 0.8;
- }
+.header-right img {
+  width: calc(10px + 3vmin);
+  height: calc(10px + 3vmin);
+  border-radius: 50%;
+  margin: 2.2vh 0 0;
+  object-fit: cover;
+}
 
- li input {
-   border-style: double;
-   color: white;
-   background-color: transparent;
-   height: 24px;
-   letter-spacing: 1px;
- }
+.logged-in {
+  display: none;
+}
 
- /* Footer */
+li input {
+  border-style: double;
+  color: white;
+  background-color: transparent;
+  height: 3.4vh;
+  letter-spacing: 1px;
+}
+
+/*** Flash ***/
+
+.flash-box {
+  width: 100vw;
+  height: 5vh;
+  display: inline-block;
+  color: white;
+  background: rgb(119, 119, 119);
+  text-align: center;
+  position: relative;
+  top: 9vh;
+  z-index: 2;
+  opacity: 0.9;
+}
+
+.flash {
+  width: 96vw;
+  float: left;
+  padding: 0.5em 0 0.5em 4em;
+  font-size: calc(7px + 1vmin);
+}
+
+.flash-close {
+  width: 4vw;
+  float: left;
+  background: rgb(160, 160, 160);
+  padding: 0.8vh 0;
+  font-size: calc(10px + 1vmin);
+}

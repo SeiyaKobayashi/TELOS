@@ -11,14 +11,12 @@
   <body>
     <script src="https://d3js.org/d3.v5.min.js"></script>
     <header>
-      <div class="header-title">
-        <%= link_to("TELOS", "/") %>
+      <div class="header-left">
+        <div class="header-title"><%= link_to("TELOS", "/") %></div>
+        <p class="header-partition">|</p>
+        <div class="header-about"><%= link_to("About", "/about") %></div>
       </div>
-      <p class="header-partition">|</p>
-      <div class="header-about">
-        <%= link_to("About", "/about") %>
-      </div>
-      <ul class="header-menus">
+      <ul class="header-right">
         <% if @current_user %>
           <li class="logged-in">
             <a href="<%= "/users/#{@current_user.id}" %>">
@@ -47,28 +45,15 @@
               <% end %>
             </li>
           <% end %>
-          <li class="logged-in">
-            <a href="/users/index"><i class="fa fa-users"></i></a>
-          </li>
-          <li class="logged-in">
-            <a href="/posts/index"><i class="fa fa-book"></i></a>
-          </li>
-          <li class="logged-in">
-            <a href="/tags/index"><i class="fa fa-tags"></i></a>
-          </li>
-          <li class="logged-in">
-            <a href="/posts/new"><i class="fa fa-edit"></i></a>
-          </li>
-          <li class="logged-in"><%= link_to("Logout", "/logout", {method: :post}) %></li>
+          <li class="logged-in"><a href="/users/index"><i class="fa fa-users"></i></a></li>
+          <li class="logged-in"><a href="/posts/index"><i class="fa fa-book"></i></a></li>
+          <li class="logged-in"><a href="/tags/index"><i class="fa fa-tags"></i></a></li>
+          <li class="logged-in"><a href="/posts/new"><i class="fa fa-edit"></i></a></li>
+          <li class="logged-in"><%= link_to("Log Out", "/logout", {method: :post}) %></li>
           <li><i class="fa fa-bars" aria-hidden="true"></i></li>
         <% else %>
-          <li class="not-logged-in">
-            <%= link_to("Sign Up", "/signup") %>
-          </li>
-          <li class="not-logged-in">
-            <%= link_to("Login", "/login") %>
-          </li>
-          <li><i class="fa fa-bars" aria-hidden="true"></i></li>
+          <li class="not-logged-in"><%= link_to("Log In", "/login") %></li>
+          <li class="not-logged-in"><%= link_to("Sign Up", "/signup") %></li>
         <% end %>
       </ul>
       <%= javascript_include_tag 'header_menu' %>
@@ -81,6 +66,5 @@
       </div>
     <% end %>
     <%= yield %>
-    <!-- <footer><hr></footer> -->
   </body>
 </html>
