@@ -48,7 +48,7 @@
   color: #9b9b9b;
 }
 
-/* users/show, /users/index_mylist */
+/*** users/show, /users/index_mylist ***/
 
 .user-show {
   padding: 20px 10px;
@@ -59,107 +59,63 @@
   float: left;
   width: 25%;
   height: 600px;
-  padding: 20px 0 10px 10px;
+  padding: 0 0 10px 10px;
   margin: 0 0px 0 auto;
   box-sizing: border-box;
   word-wrap: break-word;
 }
 
-.profile-update a {
-  font-size: 11px;
-}
-
-.user-if-follows {
-  display:inline-block;
-  width: 110px;
-  color: #bcbcbc;
-}
-
-.user-if-follows p {
-  font-size: 8px;
-}
-
-.user-follow-button {
-  margin: 10px 0 0 0;
-}
-
-.user-follow-button button {
-  display:inline-block;
-  width: auto;
-  height: 28px;
-  border: 1px transparent;
-  background-color: #ECEBEB;
-  font-size: 16px;
-}
-
-.user-follow-button button:hover {
-  opacity: 0.6;
-}
-
-.user-buttons {
-  float: right;
-  width: 75%;
-}
-
-.user-buttons button {
-  display:inline-block;
-  width: 95px;
-  height: 30px;
-  border: 1px transparent;
-  background-color: #ECEBEB;
-  font-size: 15px;
-  margin-top: 15px;
-}
-
-.user-buttons button:hover {
-  opacity: 0.7;
-}
-
-.user-posts-link button .clicked {
-  background-color: black;
-}
-
-.container-user {
-  float: right;
-  width: 75%;
-  padding: 10px 80px 40px 40px;
-  margin: 10px 0 30px auto;
-  box-sizing: border-box;
-}
-
 .user {
-  margin-bottom: 20px;
+  margin-bottom: 3vh;
 }
 
 .user img {
-  width: 90px;
-  height: 90px;
+  width: calc(30px + 5vw);
+  height: calc(30px + 5vw);
   border-radius: 50%;
-  margin: 8px 0;
+  margin: 1vh 0;
   object-fit: cover;
 }
 
 .user h2 {
-  font-size: 24px;
+  font-size: calc(15px + 1.5vh);
   font-weight: 600;
-  line-height: 1.4;
-}
-
-.user p {
-  font-size: 14px;
-  margin-bottom: 15px;
 }
 
 .profile-update a {
   color: #8899a6;
   text-decoration: underline;
   font-weight: 200;
+  font-size: 11px;
+}
+
+.user p {
+  font-size: calc(10px + 1vh);
+  margin-bottom: 1vh;
 }
 
 .user-stats a {
   color: #8899a6;
   text-decoration: underline;
   font-weight: 200;
+  font-size: calc(10px + 0.6vh);
+}
+
+.user-follow-button {
+  margin: 8px 0 0 0;
+}
+
+.user-follow-button button {
+  display:inline-block;
+  width: auto;
+  height: calc(10px + 2vh);
+  border: 1px transparent;
+  background-color: #ECEBEB;
+  font-size: calc(11px + 0.6vh);
+}
+
+.user-follow-button button:hover {
+  opacity: 0.6;
 }
 
 .user-activity-graph {
@@ -167,12 +123,12 @@
 }
 
 .graph-title {
-  font-size: 13px;
+  font-size: calc(10px + 0.5vh);
   font-weight: bold;
 }
 
 .graph-descriptions {
-  font-size: 10px;
+  font-size: calc(8px + 0.3vh);
 }
 
 .bar {
@@ -186,15 +142,49 @@
 }
 
 .label {
-  font-size: 15px;
+  font-size: calc(10px + 0.5vh);
   font-weight: 600;
+}
+
+.user-buttons {
+  float: right;
+  width: 75%;
+  position: sticky;
+  position: -webkit-sticky;
+  top: 9vh;
+  z-index: 3;
+}
+
+.user-buttons button {
+  display:inline-block;
+  width: 8vw;
+  height: 4vh;
+  border: 1px transparent;
+  background-color: #ECEBEB;
+  font-size: calc(10px + 0.8vh);
+  margin-top: 2.3vh;
+}
+
+.user-buttons button:hover {
+  opacity: 0.7;
+}
+
+.user-posts-link button .clicked {
+  background-color: black;
+}
+
+.container-user {
+  float: right;
+  width: 75%;
+  padding: 1vh 5vw 3vw 4vh;
+  margin: 1.2vh 0 2vw auto;
+  box-sizing: border-box;
 }
 
 .container-user .posts-index-item-user {
   position: relative;
   width: 100%;
-  height: 100%;
-  padding: 10px 25px;
+  padding: 1vh 2vw;
   background-color: white;
   overflow: hidden;
   box-shadow: 0 2px 4px #898882;
@@ -207,9 +197,9 @@
 }
 
 .post-left-user img {
-  width: 50px;
-  height: 50px;
-  margin-top: 8px;
+  width: calc(12px + 5vh);
+  height: calc(12px + 5vh);
+  margin-top: 1.5vh;
   border-radius: 50%;
   object-fit: cover;
 }
@@ -217,17 +207,17 @@
 .post-right-user {
   float: left;
   width: 88%;
-  padding: 10px 10px 0 30px;
+  padding: 1.5vh 1vw 0 1vw;
   text-align: left;
   word-wrap: break-word;
 }
 
 .post-likes-user {
-  position: absolute;
-  left: 10.55em;
-  bottom: 0.5em;
-  margin-top: 8px;
-  font-size: 14px;
+  position: relative;
+  float: right;
+  width: 100%;
+  padding: 2px 0 0 calc(100px + 52vw);
+  font-size: 16px;
   color: grey;
 }
 
@@ -240,38 +230,7 @@
 .post-likes-user .not-liked {
   display: inline-block;
   float: left;
-  margin-bottom: 0.35em;
-}
-
-.user span {
-  color: #afb6bf;
-  font-weight: 200;
-  padding: 0 6px 0 8px;
-}
-
-.user-tabs {
-  margin-top: 40px;
-  background-color: white;
-  overflow: hidden;
-  box-shadow: 0 2px 6px #c1ced7;
-}
-
-.user-tabs li {
-  float: left;
-}
-
-.user-tabs li.active {
-  border-bottom: 2px solid #3ecdc6;
-}
-
-.user-tabs li.active a {
-  color: #57575f;
-}
-
-.user-tabs a {
-  display: inline-block;
-  padding: 16px 30px;
-  color: #afb6bf;
+  margin-bottom: 0.3em;
 }
 
 .no-follower {
