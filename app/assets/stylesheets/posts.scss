@@ -68,17 +68,19 @@
 
 .post-right {
   float: left;
-  width: 82%;
+  width: 76%;
   text-align: left;
-  padding: 1.7vh 4vw 0 0;
+  padding: 1.5vh 4vw 0 0;
   word-wrap: break-word;
+  font-size: calc(8px + 1vh);
 }
 
 .post-likes {
-  position: relative;
-  float: right;
-  width: 100%;
-  padding: 2px 0 0 calc(100px + 50vw);
+  position: absolute;
+  float: left;
+  width: 6%;
+  left: 58vw;
+  bottom: 1.5vh;
   font-size: 16px;
   color: grey;
 }

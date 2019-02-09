@@ -9,7 +9,6 @@
         </div>
       <% else %>
         <% if Relationship.find_by(follower_id: @current_user.id, followed_id: params[:id]) != nil %>
-          <!-- <div class="user-if-follows"><p>follows you</p></div> -->
           <div class="user-follow-button">
             <button>
               <%= link_to "Following", {controller: 'relationships', action: 'delete', id: params[:id]},
@@ -32,17 +31,17 @@
           </div>
         <% end %>
       <% end %>
-      <p><%= simple_format(@user.short_bio) %></p>
+      <p class="bio"><%= simple_format(@user.short_bio) %></p>
       <p class="user-stats">
-        <%= link_to("Posts", "/users/#{@user.id}") %>: <%= @posts_count %> |
+        <%= link_to("Posts", "/users/#{@user.id}") %>: <%= @posts_count %> /
         <%= link_to("Likes", "/users/#{@user.id}/mylist") %>: <%= @likes_count %>
       </p>
       <p class="user-stats">
         <% if @user.id == @current_user.id %>
-          <%= link_to "Following", controller: 'users', action: 'relationships_following_private' %>: <%= @user_following_count %> |
+          <%= link_to "Following", controller: 'users', action: 'relationships_following_private' %>: <%= @user_following_count %> /
           <%= link_to "Follower", controller: 'users', action: 'relationships_follower_private' %>: <%= @user_followed_count %>
         <% else %>
-          <%= link_to "Following", controller: 'users', action: 'relationships_following' %>: <%= @user_following_count %> |
+          <%= link_to "Following", controller: 'users', action: 'relationships_following' %>: <%= @user_following_count %> /
           <%= link_to "Follower", controller: 'users', action: 'relationships_follower' %>: <%= @user_followed_count %>
         <% end %>
       </p>
@@ -63,7 +62,7 @@
     <% else %>
       <button><%= link_to("Posts", "/users/#{@user.id}") %></button>
     <% end %>
-    <button><%= link_to("Liked Posts", "/users/#{@user.id}/mylist") %></button>
+    <button><%= link_to("Likes", "/users/#{@user.id}/mylist") %></button>
   </div>
   <div class="container-user">
     <% if @user.posts.length != 0 %>

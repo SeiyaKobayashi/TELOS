@@ -51,7 +51,7 @@
 /*** users/show, /users/index_mylist ***/
 
 .user-show {
-  padding: 20px 10px;
+  padding: 2.5vh 1.3vw;
   text-align: center;
 }
 
@@ -59,26 +59,25 @@
   float: left;
   width: 25%;
   height: 600px;
-  padding: 0 0 10px 10px;
-  margin: 0 0px 0 auto;
+  padding: 1.2vh 0 1.2vh 1vw;
   box-sizing: border-box;
   word-wrap: break-word;
 }
 
 .user {
-  margin-bottom: 3vh;
+  margin-bottom: 2vh;
 }
 
 .user img {
-  width: calc(30px + 5vw);
-  height: calc(30px + 5vw);
+  width: calc(30px + 4.8vw);
+  height: calc(30px + 4.8vw);
   border-radius: 50%;
   margin: 1vh 0;
   object-fit: cover;
 }
 
 .user h2 {
-  font-size: calc(15px + 1.5vh);
+  font-size: calc(15px + 1.4vh);
   font-weight: 600;
 }
 
@@ -86,19 +85,24 @@
   color: #8899a6;
   text-decoration: underline;
   font-weight: 200;
-  font-size: 11px;
+  font-size: calc(7px + 0.7vh);
 }
 
-.user p {
+.bio {
   font-size: calc(10px + 1vh);
-  margin-bottom: 1vh;
+  margin-bottom: 1.4vh;
+}
+
+.user-stats {
+  margin-top: 1vh;
+  font-size: calc(10px + 0.5vh);
 }
 
 .user-stats a {
   color: #8899a6;
   text-decoration: underline;
   font-weight: 200;
-  font-size: calc(10px + 0.6vh);
+  font-size: calc(10px + 0.5vh);
 }
 
 .user-follow-button {
@@ -123,7 +127,7 @@
 }
 
 .graph-title {
-  font-size: calc(10px + 0.5vh);
+  font-size: calc(9px + 0.5vh);
   font-weight: bold;
 }
 
@@ -158,10 +162,10 @@
 .user-buttons button {
   display:inline-block;
   width: 8vw;
-  height: 4vh;
+  height: 4.3vh;
   border: 1px transparent;
   background-color: #ECEBEB;
-  font-size: calc(10px + 0.8vh);
+  font-size: calc(10px + 0.6vh);
   margin-top: 2.3vh;
 }
 
@@ -184,7 +188,7 @@
 .container-user .posts-index-item-user {
   position: relative;
   width: 100%;
-  padding: 1vh 2vw;
+  padding: 1.2vh 2vw;
   background-color: white;
   overflow: hidden;
   box-shadow: 0 2px 4px #898882;
@@ -206,17 +210,19 @@
 
 .post-right-user {
   float: left;
-  width: 88%;
+  width: 82%;
   padding: 1.5vh 1vw 0 1vw;
   text-align: left;
   word-wrap: break-word;
+  font-size: calc(8px + 1vh);
 }
 
 .post-likes-user {
-  position: relative;
-  float: right;
-  width: 100%;
-  padding: 2px 0 0 calc(100px + 52vw);
+  position: absolute;
+  float: left;
+  width: 6%;
+  left: 61vw;
+  bottom: 1.5vh;
   font-size: 16px;
   color: grey;
 }
