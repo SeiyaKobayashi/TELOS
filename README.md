@@ -19,12 +19,12 @@ It's not easy to keep track of your daily progress manually (how many words did 
 ## Technical Tools I Used For This Project
 - PaaS: Heroku
 - DB: MySQL
-- Framework: Ruby on Rails
-- Gems: jquery-rails, d3_rails, attr_encrypted, digest-sha3 ...
+- Framework: Ruby on Rails, React
+- Ruby Gems: react-rails, webpacker, jquery-rails, d3_rails, attr_encrypted ...
 
 ## Future Plans
 - Make it responsive (i.e. responsive design)
-- Create the iOS version and ship it to the App Store
+- Create the mobile versions (iOS/Android)
 
 ## Run TELOS on localhost
 Clone this repository. Within the directory, run the following command.

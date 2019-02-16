@@ -28,7 +28,7 @@ TELOSは、Twitterのような感覚で気軽に単語が覚えられる、全�
 - PaaS: Heroku
 - データベース: MySQL
 - フレームワーク: Ruby on Rails, React
-- Gems: jquery-rails, d3_rails, attr_encrypted, digest-sha3 など
+- Gems: react-rails, webpacker, jquery-rails, d3_rails, attr_encrypted など
 
 ## 今後の開発予定
 - レスポンシブ対応。モバイル端末のブラウザからも使いやすくする。
