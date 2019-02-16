@@ -78,29 +78,20 @@
               <%= link_to(simple_format(post.content), "/posts/#{post.id}") %>
             </div>
             <div class="post-likes-user">
-              <% if Like.find_by(user_id: @current_user.id, post_id: post.id) != nil %>
-                <%= link_to likes_delete_path(:post_id => post.id, :user_id => params[:id]) do %>
-                  <i class="fas fa-thumbs-up liked"></i>
-                <% end %>
-                <% likes = Like.where(post_id: post.id) %>
-                <% num_of_likes = likes.length %>
-                <% if num_of_likes != 0 %>
-                  <div class="num-of-likes-liked">
-                    <%= num_of_likes %>
-                  </div>
-                <% end %>
+              <% like = Like.find_by(user_id: @current_user.id, post_id: post.id) %>
+              <% likes = Like.where(post_id: post.id) %>
+              <% num_of_likes = likes.length %>
+              <% if like != nil %>
+                <% like_id = like.id %>
               <% else %>
-                <%= link_to likes_create_path(:post_id => post.id, :user_id => params[:id]) do %>
-                  <i class="fas fa-thumbs-up not-liked"></i>
-                <% end %>
-                <% likes = Like.where(post_id: post.id) %>
-                <% num_of_likes = likes.length %>
-                <% if num_of_likes != 0 %>
-                  <div class="num-of-likes-not-liked">
-                    <%= num_of_likes %>
-                  </div>
-                <% end %>
+                <% like_id = 0 %>
               <% end %>
+              <!-- See app/javascript/compenents/Like.jsx -->
+              <%= react_component 'Like',
+                { user_id: @current_user.id,
+                  post_id: post.id,
+                  like_id: like_id,
+                  num_of_likes: num_of_likes } %>
             </div>
         </div>
         <% end %>

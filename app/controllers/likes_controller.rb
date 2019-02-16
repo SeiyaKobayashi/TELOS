@@ -8,41 +8,42 @@ class LikesController < ApplicationController
     @posts = Post.all.order(updated_at: :desc)
     like = Like.new(user_id: @current_user.id, post_id: @post.id)
     like.save
-    if request.referer&.include?("/posts/index/#{@current_user.id}")
-      redirect_to("/posts/index/#{@current_user.id}")
-    elsif request.referer&.include?("/posts/index")
-      # render partial: 'posts/likes', locals: {post: @post}
-      redirect_to("/posts/index")
-    elsif request.referer&.include?("/users/#{params[:user_id]}/mylist")
-      redirect_to("/users/#{params[:user_id]}/mylist")
-    elsif request.referer&.include?("/users/#{params[:user_id]}")
-      redirect_to("/users/#{params[:user_id]}")
-    elsif request.referer&.include?("/tags/#{params[:tag_id]}")
-      redirect_to("/tags/#{params[:tag_id]}")
-    else
-      redirect_to("/posts/#{params[:post_id]}")
-    end
+    render json: like
+    # if request.referer&.include?("/posts/index/#{@current_user.id}")
+    #   render json: like
+    # elsif request.referer&.include?("/posts/index")
+    #   render json: like
+    # elsif request.referer&.include?("/users/#{params[:user_id]}/mylist")
+    #   render json: like
+    # elsif request.referer&.include?("/users/#{params[:user_id]}")
+    #   render json: like
+    # elsif request.referer&.include?("/tags/#{params[:tag_id]}")
+    #   render json: like
+    # else
+    #   render json: like
+    # end
   end
 
   # Unlike the post
   def delete
     @posts = Post.all.order(updated_at: :desc)
     @post = Post.find_by(id: params[:post_id])
-    Like.find_by(user_id: @current_user.id, post_id: params[:post_id]).destroy
-    if request.referer&.include?("/posts/index/#{@current_user.id}")
-      redirect_to("/posts/index/#{@current_user.id}")
-    elsif request.referer&.include?("/posts/index")
-      # render partial: 'posts/likes', locals: {post: @post}
-      redirect_to("/posts/index")
-    elsif request.referer&.include?("/users/#{params[:user_id]}/mylist")
-      redirect_to("/users/#{params[:user_id]}/mylist")
-    elsif request.referer&.include?("/users/#{params[:user_id]}")
-      redirect_to("/users/#{params[:user_id]}")
-    elsif request.referer&.include?("/tags/#{params[:tag_id]}")
-      redirect_to("/tags/#{params[:tag_id]}")
-    else
-      redirect_to("/posts/#{params[:post_id]}")
-    end
+    like = Like.find_by(user_id: @current_user.id, post_id: params[:post_id])
+    like.destroy
+    render json: like
+    # if request.referer&.include?("/posts/index/#{@current_user.id}")
+    #   render json: like
+    # elsif request.referer&.include?("/posts/index")
+    #   render json: like
+    # elsif request.referer&.include?("/users/#{params[:user_id]}/mylist")
+    #   render json: like
+    # elsif request.referer&.include?("/users/#{params[:user_id]}")
+    #   render json: like
+    # elsif request.referer&.include?("/tags/#{params[:tag_id]}")
+    #   render json: like
+    # else
+    #   render json: like
+    # end
   end
 
 end

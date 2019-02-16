@@ -16,29 +16,20 @@
         <% end %>
       </div>
       <div class="post-like">
-        <% if Like.find_by(user_id: @current_user.id, post_id: @post.id) != nil %>
-          <% likes = Like.where(post_id: params[:id]) %>
-          <% num_of_likes = likes.length %>
-          <div class="num-of-likes liked">
-            <% if num_of_likes != 0 %>
-              <%= num_of_likes %>
-            <% end %>
-          </div>
-          <%= link_to likes_delete_path(:post_id => params[:id]) do %>
-            <i class="fas fa-thumbs-up liked"></i>
-          <% end %>
+        <% like = Like.find_by(user_id: @current_user.id, post_id: @post.id) %>
+        <% likes = Like.where(post_id: @post.id) %>
+        <% num_of_likes = likes.length %>
+        <% if like != nil %>
+          <% like_id = like.id %>
         <% else %>
-          <% likes = Like.where(post_id: params[:id]) %>
-          <% num_of_likes = likes.length %>
-          <div class="num-of-likes not-liked">
-            <% if num_of_likes != 0 %>
-              <%= num_of_likes %>
-            <% end %>
-          </div>
-          <%= link_to likes_create_path(:post_id => params[:id]) do %>
-            <i class="fas fa-thumbs-up not-liked"></i>
-          <% end %>
+          <% like_id = 0 %>
         <% end %>
+        <!-- See app/javascript/compenents/Like_show.jsx -->
+        <%= react_component 'Like_show',
+          { user_id: @current_user.id,
+            post_id: @post.id,
+            like_id: like_id,
+            num_of_likes: num_of_likes } %>
       </div>
       <div class="post-time">
         <%= @post.created_at%>

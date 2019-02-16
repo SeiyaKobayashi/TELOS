@@ -10,7 +10,7 @@ gem 'rails'
 gem 'activemodel', '~> 5.2', '>= 5.2.2'
 gem 'activesupport', '~> 5.2', '>= 5.2.2'
 gem 'railties', '~> 5.2', '>= 5.2.2'
-# User MySQL as the database
+# Use MySQL as DB
 gem 'mysql2'
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
@@ -39,12 +39,15 @@ gem 'rack', '~> 2.0', '>= 2.0.6'
 gem 'loofah', '>= 2.2.3'
 # gem 'data-confirm-modal'
 gem 'd3_rails', '~> 4.1', '>= 4.1.1'
+# Gems for using jQuery in Rails
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
+# Gems used for encryption
 gem 'attr_encrypted', '~> 3.0.0'
 gem 'digest-sha3', '~> 1.1'
-gem 'bxslider-rails'
-# gem 'webpacker'
+# Gems for using React in Rails
+gem 'webpacker'
+gem 'react-rails'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
