@@ -97,9 +97,9 @@ function parseTime(d) {
 // Add SVG and graphs.
 function drawGraph(dataGraph) {
   // Set margin, width and height of SVG
-  const margin = {top: 10, right: 20, bottom: 20, left:35};
+  const margin = {top: 5, right: 20, bottom: 20, left:35};
   const width = 350 - margin.left - margin.right;
-  const height = 360 - margin.top - margin.bottom;
+  const height = 320 - margin.top - margin.bottom;
 
   var svg = d3.select('.user-activity-graph')
               .append('svg')
@@ -118,7 +118,7 @@ function drawGraph(dataGraph) {
   // Oldest date --> 0, Newest date --> height
   var y = d3.scaleBand()
             .rangeRound([height, 0])
-            .padding(0.4)
+            .padding(0.45)
             .domain(dataGraph.map(function(d) {
               return d.date;
           }));

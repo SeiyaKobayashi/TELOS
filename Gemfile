@@ -9,7 +9,8 @@ end
 gem 'rails'
 gem 'activemodel', '~> 5.2', '>= 5.2.2'
 gem 'activesupport', '~> 5.2', '>= 5.2.2'
-gem 'railties', '~> 5.2', '>= 5.2.2'
+gem "actionview", ">= 5.2.2.1"
+gem "railties", ">= 5.2.2.1"
 # Use MySQL as DB
 gem 'mysql2'
 # Use Puma as the app server

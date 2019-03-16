@@ -37,8 +37,6 @@ export default class Like extends React.Component {
       data: {post_id: post_id, like_id: like_id},
       beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
       success: (like) => {
-          console.log(this.num_of_likes);
-          console.log(this.num_of_likes - 1);
         this.setState({like_id: like.id, num_of_likes: this.state.num_of_likes + 1}); },
       error: (xhr, status, err) => {
         console.error(this.props.url, status, err.toString());

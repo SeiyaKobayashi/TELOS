@@ -56,10 +56,12 @@
 }
 
 .user-profile {
+  position: fixed;
   float: left;
   width: 25%;
   height: 600px;
-  padding: 1.2vh 0 1.2vh 1vw;
+  // padding: 1.2vh 0 1.2vh 1vw;
+  padding: 0.5vh 0 1.2vh 1vw;
   box-sizing: border-box;
   word-wrap: break-word;
 }
